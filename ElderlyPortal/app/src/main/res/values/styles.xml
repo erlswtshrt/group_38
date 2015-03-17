@@ -5,4 +5,8 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="Menu_Button_Large">
+        <item name="android:background">#FFFFFFFF</item>
+    </style>
+
 </resources>
