@@ -16,6 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="group38.elderlyportal.MyMedicationsActivity" android:screenOrientation="portrait"/>
+        <activity android:name="group38.elderlyportal.AddAMedicationActivity" android:screenOrientation="portrait"/>
+        <activity android:name="group38.elderlyportal.SettingsActivity" android:screenOrientation="portrait"/>
+        <activity android:name="group38.elderlyportal.CalendarActivity" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

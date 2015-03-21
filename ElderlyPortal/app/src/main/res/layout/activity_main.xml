@@ -18,7 +18,8 @@
         android:layout_alignLeft="@+id/linearLayout"
         android:layout_alignStart="@+id/linearLayout"
         android:layout_marginTop="3dp"
-        android:textSize="22dp" />
+        android:textSize="22dp"
+        android:onClick="myMedications"/>
 
     <LinearLayout
         android:orientation="vertical"
@@ -42,7 +43,8 @@
         android:layout_below="@+id/button"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="3dp"
-        android:textSize="22dp" />
+        android:textSize="22dp"
+        android:onClick="addAMedication"/>
 
     <Button
         style="@style/Base.TextAppearance.AppCompat.Large"
@@ -57,7 +59,8 @@
         android:layout_below="@+id/button2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="3dp"
-        android:textSize="22dp" />
+        android:textSize="22dp"
+        android:onClick="calendar"/>
 
     <Button
         style="@style/Base.TextAppearance.AppCompat.Large"
@@ -72,6 +75,7 @@
         android:layout_below="@+id/button3"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="3dp"
-        android:textSize="22dp" />
+        android:textSize="22dp"
+        android:onClick="settings"/>
 
 </RelativeLayout>
