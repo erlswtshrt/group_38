@@ -13,7 +13,6 @@
         android:background="#FACE0E"
         android:elegantTextHeight="false"
         android:singleLine="true"
-        style="@style/Base.TextAppearance.AppCompat.Large"
         android:layout_below="@+id/linearLayout"
         android:layout_alignLeft="@+id/linearLayout"
         android:layout_alignStart="@+id/linearLayout"
@@ -31,7 +30,6 @@
         android:id="@+id/linearLayout"></LinearLayout>
 
     <Button
-        style="@style/Base.TextAppearance.AppCompat.Large"
         android:layout_width="fill_parent"
         android:layout_height="72dp"
         android:text="Add a Medication"
@@ -47,7 +45,6 @@
         android:onClick="addAMedication"/>
 
     <Button
-        style="@style/Base.TextAppearance.AppCompat.Large"
         android:layout_width="fill_parent"
         android:layout_height="72dp"
         android:text="Calendar"
@@ -63,7 +60,6 @@
         android:onClick="calendar"/>
 
     <Button
-        style="@style/Base.TextAppearance.AppCompat.Large"
         android:layout_width="fill_parent"
         android:layout_height="72dp"
         android:text="Settings"
