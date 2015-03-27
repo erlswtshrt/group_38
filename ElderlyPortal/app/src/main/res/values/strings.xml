@@ -5,4 +5,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+    <string-array name="medicine_list_spinner_sorting_options">
+        <item>Name</item>
+        <item>Date</item>
+    </string-array>
+
 </resources>

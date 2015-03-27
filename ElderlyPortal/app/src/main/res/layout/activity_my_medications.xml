@@ -3,9 +3,33 @@
     android:layout_height="match_parent"
     tools:context=".MyMedicationsActivity">
 
-    <ListView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/listview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sort1"
+                android:id="@+id/sort1"
+                android:textColor="#FFFFFF"
+                android:background="#3D95CE"
+                android:elegantTextHeight="false"
+                android:singleLine="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="3dp"
+                android:textSize="22dp"
+                android:onClick="sort1"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sort2"
+                android:id="@+id/sort2"
+                android:textColor="#FFFFFF"
+                android:background="#3D95CE"
+                android:elegantTextHeight="false"
+                android:layout_centerHorizontal="true"
+                android:textSize="22dp"
+                android:onClick="sort2"/>
+        <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/listview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
 </RelativeLayout>
