@@ -5,9 +5,16 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
-    <string-array name="medicine_list_spinner_sorting_options">
-        <item>Name</item>
-        <item>Date</item>
-    </string-array>
+    //from here are the strings I (Hua) add
+    <string name="med_name">Medicine Name</string>
+    <string name="dose">Dosage</string>
+    <string name="how_often">How Often Dosage is Taken</string>
+    <string name="TID_Code">TID Code</string>
+    <string name="BID_Code">BID Code</string>
+    <string name="num_refills">Number of Refills</string>
+    <string name="med_notes">Medicine Notes</string>
+    <string name="save">Save</string>
+    <string name="clear">Clear</string>
+
 
 </resources>
