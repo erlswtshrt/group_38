@@ -1,33 +1,16 @@
 
 package group38.elderlyportal;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
 import android.app.ListActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
-
-import android.view.*;
 import android.widget.*;
 import java.util.* ;
-import java.util.ArrayList;
-import java.util.List;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.app.ListActivity;
+
 
 public class MyMedicationsActivity extends ListActivity {
     private TextView text; //text above the list
@@ -87,7 +70,8 @@ public class MyMedicationsActivity extends ListActivity {
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             Spinner spinner = (Spinner) parent ;
             String selected = spinner.getSelectedItem().toString() ;
-            sortBy(selected) ;
+            MedicineListArrayAdapter adapter = (MedicineListArrayAdapter) getListAdapter() ;
+            adapter.sortBy(selected) ;
         }
 
         @Override
@@ -96,56 +80,40 @@ public class MyMedicationsActivity extends ListActivity {
         }
     }
 
-    // when an item of the list is clicked
+    /* When an item in the list is clicked, have it use an intent to start an
+       edit medicine activity. The intent is given the Medicine that was clicked.
+    */
     @Override
     protected void onListItemClick(ListView list, View view, int position, long id) {
+        //determine the selected medicine
         super.onListItemClick(list, view, position, id);
         Medicine selectedItem = (Medicine) getListView().getItemAtPosition(position);
 
+        //set the top text - for debugging
         text.setText("You clicked " + selectedItem.getName() + " at position " + position);
 
+        //create intent, store medicine, start intent
         Intent intent = new Intent (this, EditAMedicationActivity.class) ;
         intent.putExtra("Medicine", selectedItem) ;
         startActivityForResult (intent, EditAMedicationActivity_ID) ;
     }
 
+    /* Starts the add a medicine activity.
+       This action is performed by the add a medicine button.
+     */
     public void addAMedication (View view) {
         Intent intent = new Intent (this, AddAMedicationActivity.class) ;
         startActivityForResult(intent, AddAMedicationActivity_ID) ;
     }
 
-    public void sortBy (String sortBy) {
-        Log.v(this.toString(), "sorting by " + sortBy);
-        MedicineListArrayAdapter adapter = (MedicineListArrayAdapter) this.getListAdapter();
-
-        if (sortBy.equals("Name")) {
-            adapter.sort(new Comparator<Medicine>() {
-                @Override
-                public int compare(Medicine m1, Medicine m2) {
-                    return m1.getName().compareTo(m2.getName());
-                }
-            });
-        }
-        else if (sortBy.equals("Date")) {
-            adapter.sort(new Comparator<Medicine>() {
-                @Override
-                public int compare(Medicine m1, Medicine m2) {
-                    return m1.getDateOfNextRefill().compareTo(m2.getDateOfNextRefill());
-                }
-            });
-        }
-    }
-
-    public void showBy (String showBy) {
-        Log.v(this.toString(), "showing by " + showBy);
-        MedicineListArrayAdapter adapter = (MedicineListArrayAdapter) this.getListAdapter();
-        adapter.showBy(showBy) ;
-    }
-
+    /* A test method to be used for debugging.
+       @TODO remove this
+    */
     public void test (View view) {
         double rand = Math.random() ;
-        if (rand < 0.5) showBy("Date") ;
-        if (rand > 0.5) showBy("Dosage") ;
+        MedicineListArrayAdapter adapter = (MedicineListArrayAdapter) getListAdapter() ;
+        if (rand < 0.5) adapter.showBy("Date") ;
+        if (rand > 0.5) adapter.showBy("Dosage") ;
     }
 
 
