@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView android:layout_width="wrap_content"
+ 	    android:layout_height="wrap_content"
+ 	    android:text="@string/med_name"
+        android:textSize="30sp"
+        />
+
+    <EditText android:id="@+id/med_name"
+ 	    android:layout_width="wrap_content"
+ 	    android:layout_height="wrap_content"
+ 	    android:layout_weight="1"
+        android:inputType="text"
+        android:gravity="top"
+        />
+
+    <TextView android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="@string/dose"
+        android:textSize="30sp"
+        />
+
+	<EditText android:id="@+id/dose"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:scrollbars="vertical"
+        android:inputType="text"
+        />
+
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/how_often"
+        android:textSize="30sp"
+        />
+
+    <EditText android:id="@+id/how_often"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:scrollbars="vertical"
+        android:inputType="text"
+        />
+
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/TID_Code"
+        android:textSize="30sp"
+        />
+
+    <EditText android:id="@+id/TID_Code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:scrollbars="vertical"
+        android:inputType="text"
+        />
+
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/BID_Code"
+        android:textSize="30sp"
+        />
+
+    <EditText android:id="@+id/BID_Code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:scrollbars="vertical"
+        android:inputType="text"
+        />
+
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/num_refills"
+        android:textSize="30sp"
+        />
+
+    <EditText android:id="@+id/num_refills"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:scrollbars="vertical"
+        android:inputType="text"
+        />
+
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/med_notes"
+        android:textSize="30sp"
+        />
+
+    <EditText android:id="@+id/med_notes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:scrollbars="vertical"
+        android:inputType="text"
+        />
+
+    <Button android:id="@+id/save"
+		 android:text="@string/save"
+		 android:layout_width="wrap_content"
+		 android:layout_height="wrap_content"
+         android:onClick="onSaveButtonClick"
+        />
+
+    <Button android:id="@+id/clear"
+		 android:text="@string/clear"
+		 android:layout_width="wrap_content"
+		 android:layout_height="wrap_content"
+         android:onClick="onClearButtonClick"
+        />
+
+
+
+</LinearLayout>
+</ScrollView>

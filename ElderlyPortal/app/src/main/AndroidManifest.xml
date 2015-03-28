@@ -18,6 +18,7 @@
         </activity>
         <activity android:name="group38.elderlyportal.MyMedicationsActivity" android:screenOrientation="portrait"/>
         <activity android:name="group38.elderlyportal.AddAMedicationActivity" android:screenOrientation="portrait"/>
+        <activity android:name="group38.elderlyportal.EditAMedicationActivity" android:screenOrientation="portrait"/>
         <activity android:name="group38.elderlyportal.SettingsActivity" android:screenOrientation="portrait"/>
         <activity android:name="group38.elderlyportal.CalendarActivity" android:screenOrientation="portrait"/>
     </application>

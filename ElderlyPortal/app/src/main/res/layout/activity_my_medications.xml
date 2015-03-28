@@ -42,9 +42,9 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/sort1"
-            android:text="sort1"
-            android:onClick="sort1" />
+            android:id="@+id/addAMedication"
+            android:text="Add A Medication"
+            android:onClick="addAMedication" />
 
         <Button
             android:layout_width="wrap_content"
