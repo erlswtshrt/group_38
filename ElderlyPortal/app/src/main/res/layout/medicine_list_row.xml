@@ -18,7 +18,7 @@
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/icon"
         android:layout_toLeftOf="@+id/deleteButton"
         android:orientation="vertical" >
@@ -41,11 +41,11 @@
     </LinearLayout>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_width="50px"
+        android:layout_height="60px"
         android:layout_alignParentRight="true"
         android:id="@+id/deleteButton"
-        android:text="Delete"
+        android:background="@drawable/trash_can"
         android:layout_gravity="right"
         android:onClick="deleteMedicine" >
     </Button>
