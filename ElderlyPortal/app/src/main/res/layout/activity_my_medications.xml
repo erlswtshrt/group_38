@@ -9,7 +9,7 @@
     tools:context=".MyMedicationsActivity" >
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
@@ -54,19 +54,11 @@
             android:onClick="test" />
 
         <ListView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/mainText"
             android:id="@android:id/list"
             android:background="#aaaaaa" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/mainText"
-            android:id="@android:id/empty"
-            android:text="There is no data"
-            android:textStyle="bold" />
 
     </LinearLayout>
 
