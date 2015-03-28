@@ -1,14 +1,17 @@
 package group38.elderlyportal;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.GregorianCalendar;
 
@@ -21,14 +24,15 @@ import group38.elderlyportal.R;
  */
 public class MedicineListArrayAdapter extends ArrayAdapter<Medicine> {
     private final Context context;
-    private final Medicine[] values; //the medicines to be displayed
+    private final ArrayList<Medicine> values; //the medicines to be displayed
     private String showBy ; //the field that the second line of the row should display
     private final String INITAL_SHOW_BY = "Date" ; //start off by showing the date
+    private final int DELETE_BUTTON_ROW_TAG_KEY = 1 ; //the int of the tag where the button stores what row it's in
 
     /* Constructor, which takes in the list of medicines.
        Sets initial second line paramter to "Data"
      */
-    public MedicineListArrayAdapter(Context context, Medicine[] values) {
+    public MedicineListArrayAdapter(Context context, ArrayList<Medicine> values) {
         super(context, R.layout.medicine_list_row, values) ;
         this.context = context ;
         this.values = values ;
@@ -42,6 +46,7 @@ public class MedicineListArrayAdapter extends ArrayAdapter<Medicine> {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.medicine_list_row, parent, false);
+        Medicine medicine = values.get(position) ;
 
         //set the image
         ImageView imageView = (ImageView) rowView.findViewById(R.id.icon) ;
@@ -49,16 +54,20 @@ public class MedicineListArrayAdapter extends ArrayAdapter<Medicine> {
 
         //set the first line
         TextView line1TextView = (TextView) rowView.findViewById(R.id.label1);
-        line1TextView.setText(values[position].getName());
+        line1TextView.setText(medicine.getName());
 
         //set the second line, conditioning on showBy
         TextView textView2 = (TextView) rowView.findViewById(R.id.label2);
         if (showBy.equals("Date")) {
-            textView2.setText(formatGregorianCalendar(values[position].getDateOfNextRefill()));
+            textView2.setText(formatGregorianCalendar(medicine.getDateOfNextRefill()));
         }
         else if (showBy.equals("Dosage")) {
-            textView2.setText(values[position].getDosage());
+            textView2.setText(medicine.getDosage());
         }
+
+        //set the button's tag so that the button knows its medicine
+        Button deleteButton = (Button) rowView.findViewById(R.id.deleteButton) ;
+        deleteButton.setTag (medicine) ;
 
         return rowView;
     }
@@ -80,19 +89,19 @@ public class MedicineListArrayAdapter extends ArrayAdapter<Medicine> {
             this.sort(new Comparator<Medicine>() {
                 @Override
                 public int compare(Medicine m1, Medicine m2) {
-                    return m1.getName().compareTo(m2.getName());
+                return m1.getName().compareTo(m2.getName());
                 }
             });
-        }
-        else if (sortBy.equals("Date")) {
+        } else if (sortBy.equals("Date")) {
             this.sort(new Comparator<Medicine>() {
                 @Override
                 public int compare(Medicine m1, Medicine m2) {
-                    return m1.getDateOfNextRefill().compareTo(m2.getDateOfNextRefill());
+                return m1.getDateOfNextRefill().compareTo(m2.getDateOfNextRefill());
                 }
             });
         }
     }
+
 
     /* How to format a GregorianCalendar so that it looks good for displaying.
        To be used on the second line of each list row.

@@ -28,15 +28,15 @@ public class MyMedicationsActivity extends ListActivity {
         text = (TextView) findViewById(R.id.mainText);
 
         //populate the medicine list with random medicines - for debugging
-        Medicine med1 = new Medicine ("medicine 1", new GregorianCalendar (2015,3,26,3,1), "1 dose") ;
-        Medicine med2 = new Medicine ("medicine 2", new GregorianCalendar (2015,3,26,5,0), "3 doses") ;
-        Medicine med3 = new Medicine ("medicine 3", new GregorianCalendar (2015,9,2,12,47), "9 doses") ;
-        Medicine med4 = new Medicine ("medicine 4", new GregorianCalendar (2015,3,28,8,9), "4 doses") ;
-        Medicine med5 = new Medicine ("medicine 5", new GregorianCalendar (2015,12,28,2,26), "2 doses") ;
-        Medicine med6 = new Medicine ("medicine 6", new GregorianCalendar (2015,3,27,7,47), "3 doses") ;
-        Medicine med7 = new Medicine ("medicine 7", new GregorianCalendar (2014,3,28,8,9), "10 doses") ;
-        Medicine med8 = new Medicine ("medicine 8", new GregorianCalendar (2015,3,28,11,26), "0 doses") ;
-        Medicine[] list = new Medicine[] {med1, med2, med3, med4, med5, med6, med7, med8} ;
+        ArrayList<Medicine> list = new ArrayList<Medicine> () ;
+        list.add(new Medicine ("medicine 1", new GregorianCalendar (2015,3,26,3,1), "1 dose")) ;
+        list.add(new Medicine ("medicine 2", new GregorianCalendar (2015,3,26,5,0), "3 doses")) ;
+        list.add(new Medicine ("medicine 3", new GregorianCalendar (2015,9,2,12,47), "9 doses")) ;
+        list.add(new Medicine ("medicine 4", new GregorianCalendar (2015,3,28,8,9), "4 doses")) ;
+        list.add(new Medicine ("medicine 5", new GregorianCalendar (2015,12,28,2,26), "2 doses")) ;
+        list.add(new Medicine ("medicine 6", new GregorianCalendar (2015,3,27,7,47), "3 doses")) ;
+        list.add(new Medicine ("medicine 7", new GregorianCalendar (2014,3,28,8,9), "10 doses")) ;
+        list.add(new Medicine ("medicine 8", new GregorianCalendar (2015,3,28,11,26), "0 doses")) ;
 
         // initiate the listadapter to be used for managing the list of medicines
         MedicineListArrayAdapter adapter = new MedicineListArrayAdapter(this, list);
@@ -104,6 +104,18 @@ public class MyMedicationsActivity extends ListActivity {
     public void addAMedication (View view) {
         Intent intent = new Intent (this, AddAMedicationActivity.class) ;
         startActivityForResult(intent, AddAMedicationActivity_ID) ;
+    }
+
+    /* Delete a medication from the list.
+       This method is called by a delete button, which puts itself as teh parameter.
+       Each delete button stores its associated medicine as a tag, and so
+       it can convey to the adapter which medicine to delete.
+     */
+    public void deleteMedicine (View view) {
+        MedicineListArrayAdapter adapter = (MedicineListArrayAdapter) getListAdapter() ;
+        Button deleteButton = (Button) view ;
+        Medicine medicine = (Medicine) deleteButton.getTag() ;
+        adapter.remove (medicine) ;
     }
 
     /* A test method to be used for debugging.

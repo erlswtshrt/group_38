@@ -19,8 +19,10 @@ public class EditAMedicationActivity extends Activity {
         setContentView(view);
         setContentView(R.layout.activity_edit_a_medication);
 
+        //retrieve the medicine from the intent
         theMedicine = (Medicine) getIntent().getExtras().getParcelable("Medicine") ;
 
+        //set the name field of the form to be the medicine's name
         EditText med_name_Field = (EditText) findViewById(R.id.med_name) ;
         med_name_Field.setText (theMedicine.getName()) ;
     }
