@@ -145,40 +145,32 @@ public class MyMedicationsActivity extends ListActivity {
         }
     }
 
-    public void sort1 (View view) {
-        Log.v(this.toString(), "SORT1") ;
-        MySimpleArrayAdapter adapter = (MySimpleArrayAdapter) this.getListAdapter() ;
-        adapter.sort(new Comparator<Medicine>() {
-            @Override
-            public int compare(Medicine m1, Medicine m2) {
-                return m1.getName().compareTo(m2.getName());
-            }
-        });
+    public void showBy (String showBy) {
+        Log.v(this.toString(), "showing by " + showBy);
+        MySimpleArrayAdapter adapter = (MySimpleArrayAdapter) this.getListAdapter();
+        adapter.showBy (showBy) ;
     }
 
-    public void sort2 (View view) {
-        Log.v(this.toString(), "SORT2") ;
-        MySimpleArrayAdapter adapter = (MySimpleArrayAdapter) this.getListAdapter() ;
-        adapter.sort(new Comparator<Medicine>() {
-            @Override
-            public int compare(Medicine m1, Medicine m2) {
-                return m1.getDateOfNextRefill().compareTo(m2.getDateOfNextRefill());
-            }
-        });
+    public void test (View view) {
+        double rand = Math.random() ;
+        if (rand < 0.5) showBy ("Date") ;
+        if (rand > 0.5) showBy ("Dosage") ;
     }
 
     private class MySimpleArrayAdapter extends ArrayAdapter<Medicine> {
         private final Context context;
         private final Medicine[] values;
+        private String showBy ;
 
         public MySimpleArrayAdapter(Context context, Medicine[] values) {
             super(context, R.layout.medicine_list_row, values);
             this.context = context;
             this.values = values;
+            this.showBy = "Date" ;
         }
 
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+         public View getView(int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View rowView = inflater.inflate(R.layout.medicine_list_row, parent, false);
@@ -186,12 +178,24 @@ public class MyMedicationsActivity extends ListActivity {
             TextView textView2 = (TextView) rowView.findViewById(R.id.label2);
             ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
             textView1.setText(values[position].getName());
-            textView2.setText(formatGregorianCalendar(values[position].getDateOfNextRefill()));
+
+            if (showBy.equals("Date")) {
+                textView2.setText(formatGregorianCalendar(values[position].getDateOfNextRefill()));
+            }
+            else if (showBy.equals("Dosage")) {
+                textView2.setText(values[position].getDosage());
+            }
 
             String s = values[position].getName();
             imageView.setImageResource(R.drawable.ic_launcher);
 
             return rowView;
         }
+
+        public void showBy (String showBy) {
+            this.showBy = showBy ;
+            this.notifyDataSetChanged();
+        }
+
     }
 }

@@ -49,9 +49,9 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/sort2"
-            android:text="sort2"
-            android:onClick="sort2" />
+            android:id="@+id/test"
+            android:text="test"
+            android:onClick="test" />
 
         <ListView
             android:layout_width="wrap_content"
