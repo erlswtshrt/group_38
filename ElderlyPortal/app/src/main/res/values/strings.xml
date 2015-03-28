@@ -5,6 +5,12 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+    //from here are the strings I (Scott) add
+    <string-array name="medicine_list_spinner_sorting_options">
+        <item>Name</item>
+        <item>Date</item>
+    </string-array>
+
     //from here are the strings I (Hua) add
     <string name="med_name">Medicine Name</string>
     <string name="dose">Dosage</string>

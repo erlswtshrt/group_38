@@ -19,80 +19,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.view.*;
 import android.widget.*;
 import java.util.* ;
-/*
-public class MyMedicationsActivity extends ListActivity {
-
-    MySimpleArrayAdapter adapter ;
-
-    public void onCreate(Bundle bundle) {
-        super.onCreate(bundle);
-        //setContentView (R.layout.activity_my_medications) ;
-
-        Medicine med1 = new Medicine ("medicine 2", new GregorianCalendar(), "Monday") ;
-        Medicine med2 = new Medicine ("medicine 3", new GregorianCalendar(), "Tuesday") ;
-        Medicine med3 = new Medicine ("medicine 4", new GregorianCalendar(), "Wednesday") ;
-
-        Medicine[] list = new Medicine[] {med1, med2, med3} ;
-        adapter = new MySimpleArrayAdapter(this, list);
-        setListAdapter(adapter);
-    }
-
-    @Override
-    protected void onListItemClick(ListView l, View v, int position, long id) {
-        Medicine item = (Medicine) getListAdapter().getItem(position);
-        Toast.makeText(this, item.getName() + " selected", Toast.LENGTH_LONG).show();
-    }
-
-    public void sort1 () {
-        Toast.makeText (this, "Sort1", Toast.LENGTH_LONG).show();
-        adapter.sort(new Comparator<Medicine>() {
-            @Override
-            public int compare(Medicine m1, Medicine m2) {
-                return m1.getName().compareTo(m2.getName());
-            }
-        });
-    }
-
-    public void sort2 () {
-        Toast.makeText (this, "Sort2", Toast.LENGTH_LONG).show();
-        adapter.sort(new Comparator<Medicine>() {
-            @Override
-            public int compare(Medicine m1, Medicine m2) {
-                return m1.getDateOfNextRefill().compareTo(m2.getDateOfNextRefill());
-            }
-        });
-    }
-
-    private class MySimpleArrayAdapter extends ArrayAdapter<Medicine> {
-        private final Context context;
-        private final Medicine[] values;
-
-        public MySimpleArrayAdapter(Context context, Medicine[] values) {
-            super(context, R.layout.medicine_list_row, values);
-            this.context = context;
-            this.values = values;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            LayoutInflater inflater = (LayoutInflater) context
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View rowView = inflater.inflate(R.layout.medicine_list_row, parent, false);
-            TextView textView1 = (TextView) rowView.findViewById(R.id.label1);
-            TextView textView2 = (TextView) rowView.findViewById(R.id.label2);
-            ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
-            textView1.setText(values[position].getName());
-            textView2.setText(values[position].getDosage());
-
-            String s = values[position].getName();
-            imageView.setImageResource(R.drawable.ic_launcher);
-
-            return rowView;
-        }
-    }
-}
-*/
-
 import java.util.ArrayList;
 import java.util.List;
 import android.os.Bundle;
@@ -101,6 +27,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.app.ListActivity;
+
 public class MyMedicationsActivity extends ListActivity {
     private TextView text;
     private List<String> listValues;
@@ -108,7 +35,7 @@ public class MyMedicationsActivity extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.test);
+        setContentView(R.layout.activity_my_medications);
 
         text = (TextView) findViewById(R.id.mainText);
 
