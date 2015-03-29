@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="240px"
     android:orientation="horizontal"
     android:descendantFocusability="blocksDescendants" >
 
@@ -41,13 +41,30 @@
     </LinearLayout>
 
     <Button
-        android:layout_width="50px"
-        android:layout_height="60px"
+        android:layout_width="100px"
+        android:layout_height="100px"
         android:layout_alignParentRight="true"
         android:id="@+id/deleteButton"
         android:background="@drawable/trash_can"
         android:layout_gravity="right"
-        android:onClick="deleteMedicine" >
+        android:onClick="deleteMedicine"
+        android:layout_margin="10px">
+    </Button>
+
+    <Button
+        android:layout_width="100px"
+        android:layout_height="100px"
+        android:layout_alignParentLeft="false"
+        android:id="@+id/editButton"
+        android:background="@drawable/pencil"
+        android:layout_gravity="right"
+        android:onClick="deleteMedicine"
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_marginRight="130px"
+        android:layout_marginLeft="10px"
+        android:layout_marginTop="10px"
+        android:layout_marginBottom="0dp"
+        android:layout_alignParentRight="true">
     </Button>
 
 </RelativeLayout>
