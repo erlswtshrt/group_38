@@ -58,7 +58,7 @@
         android:id="@+id/editButton"
         android:background="@drawable/pencil"
         android:layout_gravity="right"
-        android:onClick="deleteMedicine"
+        android:onClick="editAMedication"
         android:layout_alignWithParentIfMissing="false"
         android:layout_marginRight="130px"
         android:layout_marginLeft="10px"
