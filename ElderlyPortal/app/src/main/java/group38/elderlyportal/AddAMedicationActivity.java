@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
@@ -14,11 +17,13 @@ import java.util.GregorianCalendar;
 /**
  * Created by JohnEarle on 3/21/15.
  */
-public class AddAMedicationActivity extends ListActivity {
+public class AddAMedicationActivity extends Activity {
 
     private AddAMedicationView view;
 
     private ArrayList<Dose> doses ;
+
+    public static final int AddADoseActivity_ID = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,35 +37,36 @@ public class AddAMedicationActivity extends ListActivity {
         // initiate the listadapter to be used for managing the list of medicines
         DoseListArrayAdapter adapter = new DoseListArrayAdapter(this, doses);
 
-        // assign the list adapter to this class
-        setListAdapter(adapter);
+        LinearLayout ll = (LinearLayout) findViewById(R.id.lin);
+        for(int i=0;i<adapter.getCount();i++) {
+            View v = adapter.getView(i, null, null);
+            ll.addView(v);
+        }
 
     }
 
     public void onAddADoseButtonClick(View view) {
         Intent intent = new Intent(this, AddADoseActivity.class);
-        startActivityForResult(intent, 9);
+        startActivityForResult(intent, AddADoseActivity_ID);
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        System.out.println("gets here");
-
-        if (requestCode == 9) {
+        if (requestCode == AddADoseActivity_ID) {
             if(resultCode == RESULT_OK){
-                String time=data.getStringExtra("time");
-                String numOfPills=data.getStringExtra("numOfPills");
+                int time=data.getIntExtra("time", 0);
+                int numOfPills=data.getIntExtra("numOfPills", 0);
 
-                doses.add(new Dose(2, 2));
-
-                System.out.println("gets here 2");
+                doses.add(new Dose(time, numOfPills));
 
                 // initiate the listadapter to be used for managing the list of medicines
                 DoseListArrayAdapter adapter = new DoseListArrayAdapter(this, doses);
 
-                // assign the list adapter to this class
-                setListAdapter(adapter);
-
+                LinearLayout ll = (LinearLayout) findViewById(R.id.lin);
+                for(int i=0;i<adapter.getCount();i++) {
+                    View v = adapter.getView(i, null, null);
+                    ll.addView(v);
+                }
             }
             if (resultCode == RESULT_CANCELED) {
                 //NO RESULT

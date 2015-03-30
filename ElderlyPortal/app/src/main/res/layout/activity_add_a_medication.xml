@@ -7,14 +7,28 @@
 <LinearLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="20px">
+
+    <TextView android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Daily doses:"
+        android:textSize="30sp"
+        android:layout_margin="20px" />
+
+    <LinearLayout
+        android:id="@+id/lin"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"></LinearLayout>
 
     <Button android:id="@+id/addADose"
         android:text="@string/addADose"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="120px"
         android:onClick="onAddADoseButtonClick"
-        />
+        android:layout_margin="20px" />
 
     <TextView android:layout_width="wrap_content"
  	    android:layout_height="wrap_content"
@@ -127,12 +141,6 @@
 		 android:layout_height="wrap_content"
          android:onClick="onClearButtonClick"
         />
-
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@android:id/list"
-        android:background="#aaaaaa" />
 
 </LinearLayout>
 </ScrollView>

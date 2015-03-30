@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="300px"
     android:orientation="horizontal"
-    android:descendantFocusability="blocksDescendants" >
+    android:descendantFocusability="blocksDescendants"
+    android:background="#ffd7d7d7"
+    android:padding="20px">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
@@ -11,33 +13,19 @@
         android:orientation="vertical"
         android:layout_margin="10px">
 
-        <TextView android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/doseTime"
-            android:textSize="30sp"
-            />
-
-        <EditText android:id="@+id/doseTime"
+        <TextView
+            android:id="@+id/timeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:inputType="text"
-            android:gravity="top"
-            />
+            android:textSize="70px" >
+        </TextView>
 
-        <TextView android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/numOfPillsText"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/numOfPills"
-            android:textSize="30sp"
-            />
-
-        <EditText android:id="@+id/numOfPills"
-            android:layout_width="200px"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:scrollbars="vertical"
-            android:inputType="text"
-            />
+            android:textSize="70px" >
+        </TextView>
 
     </LinearLayout>
 

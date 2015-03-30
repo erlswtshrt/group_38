@@ -7,42 +7,54 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="40px">
+
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="160px"
+            android:text="Add a new dose:"
+            android:textSize="84px"
+            android:textColor="#ff222222"
+            />
 
         <TextView android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/doseTime"
-            android:textSize="30sp"
-            />
+            android:textSize="70px"
+            android:textColor="#ff222222"
+            android:layout_margin="20px" />
 
-        <EditText android:id="@+id/time"
+        <Spinner
             android:layout_width="400px"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:inputType="text"
-            android:gravity="top"
-            />
+            android:layout_height="160px"
+            android:id="@+id/timeSpinner"
+            android:layout_margin="20px"
+            android:background="#FACE0E" />
 
         <TextView android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/numOfPills"
-            android:textSize="30sp"
-            />
+            android:textSize="70px"
+            android:textColor="#ff222222"
+            android:layout_margin="20px" />
 
-        <EditText android:id="@+id/numOfPills"
+        <Spinner
             android:layout_width="400px"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:scrollbars="vertical"
-            android:inputType="text"
-            />
+            android:layout_height="160px"
+            android:id="@+id/numOfPillsSpinner"
+            android:layout_margin="20px"
+            android:background="#FACE0E" />
 
         <Button android:id="@+id/save"
-            android:text="@string/save"
-            android:layout_width="wrap_content"
+            android:text="@string/addADose"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:onClick="onSaveButtonClick"
-            />
+            android:background="#3D95CE"
+            android:textColor="#FFFFFF"
+            android:layout_marginLeft="20px"
+            android:layout_marginTop="40px"
+            android:layout_marginRight="20px" />
 
     </LinearLayout>
 </ScrollView>

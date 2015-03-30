@@ -30,7 +30,7 @@ public class DoseListArrayAdapter extends ArrayAdapter<Dose> {
        Sets initial second line paramter to "Data"
      */
     public DoseListArrayAdapter(Context context, ArrayList<Dose> values) {
-        super(context, R.layout.medicine_list_row, values) ;
+        super(context, R.layout.dose_list_row, values) ;
         this.context = context ;
         this.values = values ;
     }
@@ -43,6 +43,18 @@ public class DoseListArrayAdapter extends ArrayAdapter<Dose> {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.dose_list_row, parent, false);
         Dose dose = values.get(position) ;
+
+        Integer time = dose.getTime();
+        String timeStr = time.toString();
+
+        TextView timeText = (TextView) rowView.findViewById(R.id.timeText);
+        timeText.setText("Time: " + timeStr + ":00");
+
+        Integer numOfPills = dose.getNumOfPills();
+        String numOfPillsStr = numOfPills.toString();
+
+        TextView numOfPillsText = (TextView) rowView.findViewById(R.id.numOfPillsText);
+        numOfPillsText.setText("Number of Pills: " + numOfPillsStr);
 
         return rowView;
     }
