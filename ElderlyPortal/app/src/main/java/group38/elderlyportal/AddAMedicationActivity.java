@@ -1,10 +1,15 @@
 package group38.elderlyportal;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -33,7 +38,7 @@ public class AddAMedicationActivity extends Activity {
         view = new AddAMedicationView(this);
         setContentView(R.layout.activity_add_a_medication);
 
-        //populate the medicine list with random medicines - for debugging
+        // init ArrayList of doses
         doses = new ArrayList<Dose> () ;
 
         // initiate the listadapter to be used for managing the list of doses
@@ -63,6 +68,17 @@ public class AddAMedicationActivity extends Activity {
                 //NO RESULT
             }
         }
+    }
+
+    public void deleteDose (View view) {
+        // get parent of delete button and delete parent view
+        /* A test method to be used for debugging.
+       @TODO remove dose from ArrayList
+        */
+        ViewParent tempView = view.getParent();
+        LinearLayout ll = (LinearLayout) findViewById(R.id.lin);
+        ll.removeView((ViewGroup)tempView);
+
     }
 
     public void onSaveButtonClick(View view) {

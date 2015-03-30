@@ -29,4 +29,15 @@
 
     </LinearLayout>
 
+    <Button
+        android:layout_width="100px"
+        android:layout_height="100px"
+        android:layout_alignParentRight="true"
+        android:id="@+id/deleteButton"
+        android:background="@drawable/trash_can"
+        android:layout_gravity="right"
+        android:onClick="deleteDose"
+        android:layout_margin="10px">
+    </Button>
+
 </RelativeLayout>
