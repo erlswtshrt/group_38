@@ -1,26 +1,71 @@
 package group38.elderlyportal;
 
 import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+import java.util.GregorianCalendar;
+
 
 /**
  * Created by JohnEarle on 3/21/15.
  */
-public class AddAMedicationActivity extends Activity {
+public class AddAMedicationActivity extends ListActivity {
 
     private AddAMedicationView view;
+
+    private ArrayList<Dose> doses ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         view = new AddAMedicationView(this);
-        setContentView(view);
         setContentView(R.layout.activity_add_a_medication);
 
+        //populate the medicine list with random medicines - for debugging
+        doses = new ArrayList<Dose> () ;
+
+        // initiate the listadapter to be used for managing the list of medicines
+        DoseListArrayAdapter adapter = new DoseListArrayAdapter(this, doses);
+
+        // assign the list adapter to this class
+        setListAdapter(adapter);
+
+    }
+
+    public void onAddADoseButtonClick(View view) {
+        Intent intent = new Intent(this, AddADoseActivity.class);
+        startActivityForResult(intent, 9);
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        System.out.println("gets here");
+
+        if (requestCode == 9) {
+            if(resultCode == RESULT_OK){
+                String time=data.getStringExtra("time");
+                String numOfPills=data.getStringExtra("numOfPills");
+
+                doses.add(new Dose(2, 2));
+
+                System.out.println("gets here 2");
+
+                // initiate the listadapter to be used for managing the list of medicines
+                DoseListArrayAdapter adapter = new DoseListArrayAdapter(this, doses);
+
+                // assign the list adapter to this class
+                setListAdapter(adapter);
+
+            }
+            if (resultCode == RESULT_CANCELED) {
+                //NO RESULT
+            }
+        }
     }
 
     public void onSaveButtonClick(View view) {
@@ -72,8 +117,6 @@ public class AddAMedicationActivity extends Activity {
         bid_Field.setText("");
         num_refills_Field.setText("");
         med_notes_Field.setText("");
-
-
     }
 
 }

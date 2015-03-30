@@ -11,22 +11,22 @@ import java.util.GregorianCalendar;
 public class Dose implements Parcelable {
 
     //fields
-    private GregorianCalendar time ;
+    private int time ;
     private int numOfPills ;
 
     //constructor to set all fields
-    public Dose (GregorianCalendar time, int numOfPills) {
+    public Dose (int time, int numOfPills) {
         this.time = time ;
         this.numOfPills = numOfPills ;
     }
 
     //constructor to be used for parseling
     protected Dose(Parcel in) {
-        time = (GregorianCalendar) in.readValue(GregorianCalendar.class.getClassLoader());
+        time = in.readInt();
         numOfPills = in.readInt();
     }
 
-    public void setTime (GregorianCalendar time) {
+    public void setTime (int time) {
         this.time = time ;
     }
 
@@ -34,7 +34,7 @@ public class Dose implements Parcelable {
         this.numOfPills = numOfPills ;
     }
 
-    public GregorianCalendar getTime () {
+    public int getTime () {
         return this.time ;
     }
 

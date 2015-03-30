@@ -22,5 +22,10 @@
     <string name="save">Save</string>
     <string name="clear">Clear</string>
 
+    // from here are the strings I (John) add
+    <string name="doseTime">Hour of day:</string>
+    <string name="numOfPills">Number of pills:</string>
+    <string name="addADose">Add Dose</string>
+
 
 </resources>
