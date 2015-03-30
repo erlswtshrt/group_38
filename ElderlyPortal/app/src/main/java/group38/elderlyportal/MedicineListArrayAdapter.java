@@ -69,6 +69,8 @@ public class MedicineListArrayAdapter extends ArrayAdapter<Medicine> {
         Button deleteButton = (Button) rowView.findViewById(R.id.deleteButton) ;
         deleteButton.setTag (medicine) ;
 
+        Button editButton = (Button) rowView.findViewById(R.id.editButton);
+        editButton.setTag(medicine);
         return rowView;
     }
 
