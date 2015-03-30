@@ -25,6 +25,8 @@ public class AddAMedicationActivity extends Activity {
 
     public static final int AddADoseActivity_ID = 5;
 
+    private DoseListArrayAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,14 +36,8 @@ public class AddAMedicationActivity extends Activity {
         //populate the medicine list with random medicines - for debugging
         doses = new ArrayList<Dose> () ;
 
-        // initiate the listadapter to be used for managing the list of medicines
-        DoseListArrayAdapter adapter = new DoseListArrayAdapter(this, doses);
-
-        LinearLayout ll = (LinearLayout) findViewById(R.id.lin);
-        for(int i=0;i<adapter.getCount();i++) {
-            View v = adapter.getView(i, null, null);
-            ll.addView(v);
-        }
+        // initiate the listadapter to be used for managing the list of doses
+        adapter = new DoseListArrayAdapter(this, doses);
 
     }
 
@@ -59,14 +55,9 @@ public class AddAMedicationActivity extends Activity {
 
                 doses.add(new Dose(time, numOfPills));
 
-                // initiate the listadapter to be used for managing the list of medicines
-                DoseListArrayAdapter adapter = new DoseListArrayAdapter(this, doses);
-
                 LinearLayout ll = (LinearLayout) findViewById(R.id.lin);
-                for(int i=0;i<adapter.getCount();i++) {
-                    View v = adapter.getView(i, null, null);
-                    ll.addView(v);
-                }
+                View v = adapter.getView(adapter.getCount()-1, null, null);
+                ll.addView(v);
             }
             if (resultCode == RESULT_CANCELED) {
                 //NO RESULT
