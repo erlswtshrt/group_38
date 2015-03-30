@@ -1,6 +1,8 @@
 
 package group38.elderlyportal;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.ListActivity;
@@ -107,15 +109,33 @@ public class MyMedicationsActivity extends ListActivity {
     }
 
     /* Delete a medication from the list.
-       This method is called by a delete button, which puts itself as teh parameter.
+       This method is called by a delete button, which puts itself as the parameter.
        Each delete button stores its associated medicine as a tag, and so
        it can convey to the adapter which medicine to delete.
      */
     public void deleteMedicine (View view) {
-        MedicineListArrayAdapter adapter = (MedicineListArrayAdapter) getListAdapter() ;
-        Button deleteButton = (Button) view ;
-        Medicine medicine = (Medicine) deleteButton.getTag() ;
-        adapter.remove (medicine) ;
+        //sets up dialog prompting the user for confirmation before deleting a medicine
+        final View tempView = view;
+        AlertDialog.Builder deleteAlert = new AlertDialog.Builder(this);
+        deleteAlert.setMessage("Are you sure you want to delete this medication?");
+        deleteAlert.setCancelable(true);
+        deleteAlert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                //deletes the medicine
+                MedicineListArrayAdapter adapter = (MedicineListArrayAdapter) getListAdapter() ;
+                Button deleteButton = (Button) tempView ;
+                Medicine medicine = (Medicine) deleteButton.getTag() ;
+                adapter.remove (medicine) ;
+                dialog.cancel();
+            }
+        });
+        deleteAlert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert = deleteAlert.create();
+        alert.show();
     }
 
     /* A test method to be used for debugging.
