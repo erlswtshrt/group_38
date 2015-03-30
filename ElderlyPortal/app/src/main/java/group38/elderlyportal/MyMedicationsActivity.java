@@ -108,6 +108,15 @@ public class MyMedicationsActivity extends ListActivity {
         startActivityForResult(intent, AddAMedicationActivity_ID) ;
     }
 
+    public void editAMedication (View view) {
+        Intent intent = new Intent (this, EditAMedicationActivity.class);
+        Button editButton = (Button) view;
+        Medicine selectedMedicine = (Medicine) editButton.getTag();
+        intent.putExtra("Medicine", selectedMedicine);
+       // Toast.makeText(getApplicationContext(),"anything?" + selectedMedicine.getName(), Toast.LENGTH_LONG).show();
+        startActivityForResult(intent, EditAMedicationActivity_ID);
+    }
+
     /* Delete a medication from the list.
        This method is called by a delete button, which puts itself as the parameter.
        Each delete button stores its associated medicine as a tag, and so
