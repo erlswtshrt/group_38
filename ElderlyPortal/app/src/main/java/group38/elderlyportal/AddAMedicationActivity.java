@@ -71,14 +71,15 @@ public class AddAMedicationActivity extends Activity {
     }
 
     public void deleteDose (View view) {
+        // remove dose from doses list associated with this medication
+        Button deleteButton = (Button) view ;
+        Dose dose = (Dose) deleteButton.getTag() ;
+        doses.remove(dose);
+
         // get parent of delete button and delete parent view
-        /* A test method to be used for debugging.
-       @TODO remove dose from ArrayList
-        */
         ViewParent tempView = view.getParent();
         LinearLayout ll = (LinearLayout) findViewById(R.id.lin);
         ll.removeView((ViewGroup)tempView);
-
     }
 
     public void onSaveButtonClick(View view) {

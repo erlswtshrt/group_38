@@ -45,17 +45,76 @@ public class DoseListArrayAdapter extends ArrayAdapter<Dose> {
         Dose dose = values.get(position) ;
 
         Integer time = dose.getTime();
-        String timeStr = time.toString();
 
         TextView timeText = (TextView) rowView.findViewById(R.id.timeText);
-        timeText.setText("Time: " + timeStr + ":00");
+        timeText.setText("Time: " + convertTime(time));
 
-        Integer numOfPills = dose.getNumOfPills();
+        Integer numOfPills = dose.getNumOfPills() + 1;
         String numOfPillsStr = numOfPills.toString();
 
         TextView numOfPillsText = (TextView) rowView.findViewById(R.id.numOfPillsText);
         numOfPillsText.setText("Number of Pills: " + numOfPillsStr);
 
+        //set the button's tag so that the button knows its dose
+        Button deleteButton = (Button) rowView.findViewById(R.id.deleteButton) ;
+        deleteButton.setTag (dose) ;
+
         return rowView;
+    }
+
+    // convert from int representing hour to string representing time
+    public static String convertTime(int time) {
+        String answer = "";
+        switch(time) {
+            case 0: answer="12:00 AM";
+                    break;
+            case 1: answer="1:00 AM";
+                break;
+            case 2: answer="2:00 AM";
+                break;
+            case 3: answer="3:00 AM";
+                break;
+            case 4: answer="4:00 AM";
+                break;
+            case 5: answer="5:00 AM";
+                break;
+            case 6: answer="6:00 AM";
+                break;
+            case 7: answer="7:00 AM";
+                break;
+            case 8: answer="8:00 AM";
+                break;
+            case 9: answer="9:00 AM";
+                break;
+            case 10: answer="10:00 AM";
+                break;
+            case 11: answer="11:00 AM";
+                break;
+            case 12: answer="12:00 PM";
+                break;
+            case 13: answer="1:00 PM";
+                break;
+            case 14: answer="2:00 PM";
+                break;
+            case 15: answer="3:00 PM";
+                break;
+            case 16: answer="4:00 PM";
+                break;
+            case 17: answer="5:00 PM";
+                break;
+            case 18: answer="6:00 PM";
+                break;
+            case 19: answer="7:00 PM";
+                break;
+            case 20: answer="8:00 PM";
+                break;
+            case 21: answer="9:00 PM";
+                break;
+            case 22: answer="10:00 PM";
+                break;
+            case 23: answer="11:00 PM";
+                break;
+        }
+        return answer;
     }
 }

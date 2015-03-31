@@ -21,7 +21,8 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"></LinearLayout>
+        android:layout_gravity="right"
+        android:padding="40px"></LinearLayout>
 
     <Button android:id="@+id/addADose"
         android:text="@string/addADose"
