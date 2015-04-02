@@ -175,13 +175,12 @@ public class MyMedicationsActivity extends ListActivity {
                 if (resultCode == Activity.RESULT_OK) {
                     //what to do with edit
                     Medicine oldMed = (Medicine) intent.getExtras().getParcelable("old_medicine");
-                    //Toast.makeText(getApplicationContext(), oldMed.getDosage() + oldMed.getName(), Toast.LENGTH_SHORT).show();
-                    list.remove(oldMed);
-
-                  //  MedicineListArrayAdapter adapter = (MedicineListArrayAdapter) getListAdapter() ;
-                  //  Button deleteButton = (Button) this.findViewById(android.R.id.content) ;
-                  //  Medicine medicine = (Medicine) deleteButton.getTag() ;
-                   // adapter.remove (medicine) ;
+                    for (int i = 0; i < list.size(); i++) {
+                        Medicine tempMed = list.get(i);
+                        if (oldMed.toString().equals(tempMed.toString())) {
+                         list.remove(i);
+                        }
+                    }
 
                     String name = intent.getStringExtra("med_name"); //need to get other extras here
                     Medicine temp = new Medicine(name, new GregorianCalendar(2015, 3, 26, 3, 1), "2 doses");
