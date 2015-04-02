@@ -16,7 +16,7 @@
         />
 
     <EditText android:id="@+id/med_name"
- 	    android:layout_width="wrap_content"
+ 	    android:layout_width="fill_parent"
  	    android:layout_height="wrap_content"
  	    android:layout_weight="1"
         android:inputType="text"
@@ -30,7 +30,7 @@
         />
 
 	<EditText android:id="@+id/dose"
-		android:layout_width="wrap_content"
+		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:layout_weight="1"
 		android:scrollbars="vertical"
@@ -44,7 +44,7 @@
         />
 
     <EditText android:id="@+id/how_often"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:scrollbars="vertical"
@@ -58,7 +58,7 @@
         />
 
     <EditText android:id="@+id/TID_Code"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:scrollbars="vertical"
@@ -72,7 +72,7 @@
         />
 
     <EditText android:id="@+id/BID_Code"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:scrollbars="vertical"
@@ -86,7 +86,7 @@
         />
 
     <EditText android:id="@+id/num_refills"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:scrollbars="vertical"
@@ -100,7 +100,7 @@
         />
 
     <EditText android:id="@+id/med_notes"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:scrollbars="vertical"
