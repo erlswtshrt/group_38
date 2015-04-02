@@ -41,8 +41,8 @@
     </LinearLayout>
 
     <Button
-        android:layout_width="100px"
-        android:layout_height="100px"
+        android:layout_width="50px"
+        android:layout_height="50px"
         android:layout_alignParentRight="true"
         android:id="@+id/deleteButton"
         android:background="@drawable/trash_can"
@@ -52,15 +52,15 @@
     </Button>
 
     <Button
-        android:layout_width="100px"
-        android:layout_height="100px"
+        android:layout_width="50px"
+        android:layout_height="50px"
         android:layout_alignParentLeft="false"
         android:id="@+id/editButton"
         android:background="@drawable/pencil"
         android:layout_gravity="right"
         android:onClick="editAMedication"
         android:layout_alignWithParentIfMissing="false"
-        android:layout_marginRight="130px"
+        android:layout_marginRight="70px"
         android:layout_marginLeft="10px"
         android:layout_marginTop="10px"
         android:layout_marginBottom="0dp"
