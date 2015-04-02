@@ -1,6 +1,7 @@
 
 package group38.elderlyportal;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -20,6 +21,7 @@ public class MyMedicationsActivity extends ListActivity {
     //IDs for new activities
     public static final int AddAMedicationActivity_ID = 1;
     public static final int EditAMedicationActivity_ID = 2;
+    ArrayList<Medicine> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +31,10 @@ public class MyMedicationsActivity extends ListActivity {
         //initialize the text before the list
         text = (TextView) findViewById(R.id.mainText);
 
+        list = getIntent().getParcelableArrayListExtra("list");
+
         //populate the medicine list with random medicines - for debugging
-        ArrayList<Medicine> list = new ArrayList<Medicine> () ;
+       /* ArrayList<Medicine> list = new ArrayList<Medicine> () ;
         list.add(new Medicine ("medicine 1", new GregorianCalendar (2015,3,26,3,1), "1 dose")) ;
         list.add(new Medicine ("medicine 2", new GregorianCalendar (2015,3,26,5,0), "3 doses")) ;
         list.add(new Medicine ("medicine 3", new GregorianCalendar (2015,9,2,12,47), "9 doses")) ;
@@ -38,7 +42,7 @@ public class MyMedicationsActivity extends ListActivity {
         list.add(new Medicine ("medicine 5", new GregorianCalendar (2015,12,28,2,26), "2 doses")) ;
         list.add(new Medicine ("medicine 6", new GregorianCalendar (2015,3,27,7,47), "3 doses")) ;
         list.add(new Medicine ("medicine 7", new GregorianCalendar (2014,3,28,8,9), "10 doses")) ;
-        list.add(new Medicine ("medicine 8", new GregorianCalendar (2015,3,28,11,26), "0 doses")) ;
+        list.add(new Medicine ("medicine 8", new GregorianCalendar (2015,3,28,11,26), "0 doses")) ;*/
 
         // initiate the listadapter to be used for managing the list of medicines
         MedicineListArrayAdapter adapter = new MedicineListArrayAdapter(this, list);
@@ -113,7 +117,6 @@ public class MyMedicationsActivity extends ListActivity {
         Button editButton = (Button) view;
         Medicine selectedMedicine = (Medicine) editButton.getTag();
         intent.putExtra("Medicine", selectedMedicine);
-       // Toast.makeText(getApplicationContext(),"anything?" + selectedMedicine.getName(), Toast.LENGTH_LONG).show();
         startActivityForResult(intent, EditAMedicationActivity_ID);
     }
 
@@ -145,6 +148,52 @@ public class MyMedicationsActivity extends ListActivity {
         });
         AlertDialog alert = deleteAlert.create();
         alert.show();
+    }
+
+    public void returnToMenu(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putParcelableArrayListExtra("list", list);
+        setResult(Activity.RESULT_OK, intent);
+        finish();
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        switch (requestCode) {
+            case (AddAMedicationActivity_ID): {
+                if (resultCode == Activity.RESULT_OK) {
+                    String name = intent.getStringExtra("med_name"); //need to get other extras here
+                    Medicine temp = new Medicine(name, new GregorianCalendar(2015, 3, 26, 3, 1), "2 doses");
+                    list.add(temp);
+                    MedicineListArrayAdapter adapter = new MedicineListArrayAdapter(this, list);
+                    setListAdapter(adapter);
+                    adapter.sortBy("Name");
+                }
+                break;
+            }
+            case (EditAMedicationActivity_ID): {
+                if (resultCode == Activity.RESULT_OK) {
+                    //what to do with edit
+                    Medicine oldMed = (Medicine) intent.getExtras().getParcelable("old_medicine");
+                    //Toast.makeText(getApplicationContext(), oldMed.getDosage() + oldMed.getName(), Toast.LENGTH_SHORT).show();
+                    list.remove(oldMed);
+
+                  //  MedicineListArrayAdapter adapter = (MedicineListArrayAdapter) getListAdapter() ;
+                  //  Button deleteButton = (Button) this.findViewById(android.R.id.content) ;
+                  //  Medicine medicine = (Medicine) deleteButton.getTag() ;
+                   // adapter.remove (medicine) ;
+
+                    String name = intent.getStringExtra("med_name"); //need to get other extras here
+                    Medicine temp = new Medicine(name, new GregorianCalendar(2015, 3, 26, 3, 1), "2 doses");
+                    list.add(temp);
+                    MedicineListArrayAdapter adapter = new MedicineListArrayAdapter(this, list);
+                    setListAdapter(adapter);
+                    adapter.remove(oldMed);
+                    adapter.sortBy("Name");
+                }
+            }
+            break;
+        }
     }
 
     /* A test method to be used for debugging.
