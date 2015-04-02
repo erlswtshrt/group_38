@@ -32,6 +32,8 @@ public class EditAMedicationActivity extends Activity {
     }
 
     public void onSaveButtonClick(View view) {
+        Medicine oldMedicine = theMedicine;
+
         EditText med_name_Field = (EditText) findViewById(R.id.med_name);
         EditText dose_Field = (EditText) findViewById(R.id.dose);
         EditText how_often_Field = (EditText) findViewById(R.id.how_often);
@@ -58,6 +60,7 @@ public class EditAMedicationActivity extends Activity {
         resultIntent.putExtra("bid", bid);
         resultIntent.putExtra("num_refills", num_refills);
         resultIntent.putExtra("med_notes", med_notes);
+        resultIntent.putExtra("old_medicine", oldMedicine);
 
         setResult(Activity.RESULT_OK, resultIntent);
 
