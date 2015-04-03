@@ -33,6 +33,7 @@ public class SettingsActivity extends Activity implements AdapterView.OnItemSele
         textSizeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         textSizeSpinner.setAdapter(textSizeAdapter);
         textSizeSpinner.setOnItemSelectedListener(this);
+        textSizeSpinner.setSelection(1);
 
         Spinner autoAlertsSpinner = (Spinner) findViewById(R.id.auto_alerts_spinner);
         ArrayAdapter<CharSequence> autoAlertsAdapter = ArrayAdapter.createFromResource(
@@ -48,6 +49,7 @@ public class SettingsActivity extends Activity implements AdapterView.OnItemSele
                 android.R.layout.simple_spinner_dropdown_item);
         reminderPreferenceSpinner.setAdapter(reminderPreferenceAdapter);
         reminderPreferenceSpinner.setOnItemSelectedListener(this);
+        reminderPreferenceSpinner.setSelection(1);
 
         Spinner longTermPreferenceSpinner = (Spinner) findViewById(R.id.long_term_reminder_spinner);
         ArrayAdapter<CharSequence> longTermPreferenceAdapter = ArrayAdapter.createFromResource(
@@ -56,6 +58,7 @@ public class SettingsActivity extends Activity implements AdapterView.OnItemSele
                 android.R.layout.simple_spinner_dropdown_item);
         longTermPreferenceSpinner.setAdapter(longTermPreferenceAdapter);
         longTermPreferenceSpinner.setOnItemSelectedListener(this);
+        longTermPreferenceSpinner.setSelection(1);
     }
 
     public void onSetReminderTimesButtonClick(View view) {

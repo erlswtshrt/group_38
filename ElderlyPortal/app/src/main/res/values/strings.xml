@@ -67,9 +67,9 @@
     <!-- from here are the strings I (Neil) add -->
     <string name="text_size">Text Size</string>
     <string-array name="text_size_array">
+        <item>Small</item>
         <item>Medium</item>
         <item>Large</item>
-        <item>Larger</item>
     </string-array>
     <string name="auto_alerts">Auto Alerts</string>
     <string-array name="auto_alerts_array">
@@ -78,15 +78,13 @@
     </string-array>
     <string name="reminder_preference">Reminder Preference</string>
     <string-array name="reminder_preference_array">
-        <item>None</item>
-        <item>AM/PM</item>
         <item>Hourly</item>
+        <item>AM/PM</item>
     </string-array>
     <string name="set_reminder_times">Set Reminder Times</string>
     <string name="edit_alerts">Edit Alerts</string>
     <string name="long_term_reminder">Long-Term Reminders</string>
     <string-array name="long_term_reminder_array">
-        <item>None</item>
         <item>5 Day Reminder</item>
         <item>Weekly Reminder</item>
         <item>10 Day Reminder</item>
