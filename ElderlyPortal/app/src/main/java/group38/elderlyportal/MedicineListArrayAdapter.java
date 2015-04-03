@@ -95,14 +95,14 @@ public class MedicineListArrayAdapter extends ArrayAdapter<Medicine> {
             this.sort(new Comparator<Medicine>() {
                 @Override
                 public int compare(Medicine m1, Medicine m2) {
-                    return m1.getBrandName().compareTo(m2.getBrandName());
+                    return m1.getBrandName().toLowerCase().compareTo(m2.getBrandName().toLowerCase());
                 }
             });
         } else if (sortBy.equals("Scientific Name")) {
             this.sort(new Comparator<Medicine>() {
                 @Override
                 public int compare(Medicine m1, Medicine m2) {
-                    return m1.getScientificName().compareTo(m2.getScientificName());
+                    return m1.getScientificName().toLowerCase().compareTo(m2.getScientificName().toLowerCase());
                 }
             });
         } else if (sortBy.equals("Refill Date")) {
