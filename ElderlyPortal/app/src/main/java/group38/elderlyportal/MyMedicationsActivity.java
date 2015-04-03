@@ -31,17 +31,9 @@ public class MyMedicationsActivity extends ListActivity {
         //initialize the text before the list
         text = (TextView) findViewById(R.id.mainText);
 
-       // medicineList = getIntent().getParcelableArrayListExtra("list");
+        medicineList = getIntent().getParcelableArrayListExtra("list");
 
         //populate the medicine list with random medicines - for debugging
-        medicineList = new ArrayList<Medicine> () ;
-        medicineList.add(new Medicine (new ArrayList<Dose> (), "Medicine 1", "Sci Name A", "Instructions", "5", new GregorianCalendar(2015, 3, 26, 1, 1))) ;
-        medicineList.add(new Medicine (new ArrayList<Dose> (), "Medicine 2", "Sci Name G", "Instructions", "5", new GregorianCalendar(2015, 3, 27, 3, 1))) ;
-        medicineList.add(new Medicine (new ArrayList<Dose> (), "Medicine 3", "Sci Name H", "Instructions", "5", new GregorianCalendar(2015, 3, 26, 6, 1))) ;
-        medicineList.add(new Medicine (new ArrayList<Dose> (), "Medicine 4", "Sci Name E", "Instructions", "5", new GregorianCalendar(2015, 3, 27, 3, 1))) ;
-        medicineList.add(new Medicine (new ArrayList<Dose> (), "Medicine 5", "Sci Name F", "Instructions", "5", new GregorianCalendar(2015, 3, 26, 9, 1))) ;
-        medicineList.add(new Medicine (new ArrayList<Dose> (), "Medicine 6", "Sci Name V", "Instructions", "5", new GregorianCalendar(2015, 3, 28, 3, 1))) ;
-        medicineList.add(new Medicine (new ArrayList<Dose> (), "Medicine 7", "Sci Name B", "Instructions", "5", new GregorianCalendar(2015, 3, 26, 14, 1))) ;
 
         // initiate the listadapter to be used for managing the list of medicines
         MedicineListArrayAdapter adapter = new MedicineListArrayAdapter(this, medicineList);
@@ -161,41 +153,29 @@ public class MyMedicationsActivity extends ListActivity {
         switch (requestCode) {
             case (AddAMedicationActivity_ID): {
                 if (resultCode == Activity.RESULT_OK) {
-
-                    // get extras from added medicine
-//                    ArrayList<Dose> doses = intent.getParcelableArrayListExtra("doses");
-                    String brandName = intent.getStringExtra("brandName");
-                    String scientificName = intent.getStringExtra("scientificName");
-                    String instructions = intent.getStringExtra("instructions");
-                    String numRefills = intent.getStringExtra("numRefills");
-                    //GregorianCalendar refillDate = intent.get("refillDate");
-
-                    Medicine temp = new Medicine(null, brandName, scientificName, instructions, numRefills, new GregorianCalendar(2015, 3, 26, 3, 1));
+                    Medicine temp = intent.getExtras().getParcelable("addedMedicine");
                     medicineList.add(temp);
                     MedicineListArrayAdapter adapter = new MedicineListArrayAdapter(this, medicineList);
                     setListAdapter(adapter);
-                    adapter.sortBy("Name");
+                    adapter.sortBy("Brand Name");
                 }
                 break;
             }
             case (EditAMedicationActivity_ID): {
                 if (resultCode == Activity.RESULT_OK) {
-//                    //what to do with edit
-//                    Medicine oldMed = (Medicine) intent.getExtras().getParcelable("old_medicine");
-//                    for (int i = 0; i < list.size(); i++) {
-//                        Medicine tempMed = list.get(i);
-//                        if (oldMed.toString().equals(tempMed.toString())) {
-//                         list.remove(i);
-//                        }
-//                    }
-//
-//                    String name = intent.getStringExtra("med_name"); //need to get other extras here
-//                    Medicine temp = new Medicine(name, new GregorianCalendar(2015, 3, 26, 3, 1), "2 doses");
-//                    list.add(temp);
-//                    MedicineListArrayAdapter adapter = new MedicineListArrayAdapter(this, list);
-//                    setListAdapter(adapter);
-//                    adapter.remove(oldMed);
-//                    adapter.sortBy("Name");
+                    //what to do with edit
+                    Medicine oldMed = (Medicine) intent.getExtras().getParcelable("old_medicine");
+                    for (int i = 0; i < medicineList.size(); i++) {
+                        Medicine tempMed = medicineList.get(i);
+                        if (oldMed.toString().equals(tempMed.toString())) {
+                         medicineList.remove(i);
+                        }
+                    }
+                    Medicine temp = intent.getExtras().getParcelable("addedMedicine");
+                    medicineList.add(temp);
+                    MedicineListArrayAdapter adapter = new MedicineListArrayAdapter(this, medicineList);
+                    setListAdapter(adapter);
+                    adapter.sortBy("Brand Name");
                 }
             }
             break;
