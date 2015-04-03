@@ -30,7 +30,8 @@
         android:layout_height="50dp"
         android:onClick="onAddADoseButtonClick"
         android:layout_margin="10dp"
-        android:background="#3D95CE" />
+        android:background="#3D95CE"
+        android:textColor="#ffffffff" />
 
     <TextView android:layout_width="wrap_content"
  	    android:layout_height="wrap_content"
