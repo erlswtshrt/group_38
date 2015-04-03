@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="300px"
+    android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:descendantFocusability="blocksDescendants"
     android:background="#ffd7d7d7"
-    android:padding="20px">
+    android:padding="10dp">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_margin="10px">
+        android:layout_margin="10dp">
 
         <TextView
             android:id="@+id/timeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="70px" >
+            android:textSize="18sp" >
         </TextView>
 
         <TextView
             android:id="@+id/numOfPillsText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="70px" >
+            android:textSize="18sp" >
         </TextView>
 
     </LinearLayout>
 
     <Button
-        android:layout_width="100px"
-        android:layout_height="100px"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_alignParentRight="true"
         android:id="@+id/deleteButton"
         android:background="@drawable/trash_can"
         android:layout_gravity="right"
         android:onClick="deleteDose"
-        android:layout_margin="10px">
+        android:layout_margin="10dp">
     </Button>
 
 </RelativeLayout>
