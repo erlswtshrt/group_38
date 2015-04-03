@@ -24,11 +24,11 @@ public class EditAMedicationActivity extends Activity {
 
         //set the name field of the form to be the medicine's name
         EditText med_name_Field = (EditText) findViewById(R.id.med_name) ;
-        med_name_Field.setText (theMedicine.getName()) ;
+        med_name_Field.setText (theMedicine.getBrandName()) ;
 
         //set the dosage field
         EditText med_dosage_Field = (EditText) findViewById(R.id.dose);
-        med_dosage_Field.setText(theMedicine.getDosage());
+        med_dosage_Field.setText(theMedicine.getScientificName());
     }
 
     public void onSaveButtonClick(View view) {

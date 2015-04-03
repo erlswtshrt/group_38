@@ -45,11 +45,11 @@ public class MainActivity extends Activity {
         super.onActivityResult(requestCode, resultCode, intent);
         switch (requestCode) {
             case (AddAMedicationActivity_ID): {
-                if (resultCode == Activity.RESULT_OK) {
-                    String name = intent.getStringExtra("med_name"); //need to get other extras here
-                    Medicine temp = new Medicine(name, new GregorianCalendar(2015, 3, 26, 3, 1), "2 doses");
-                    medList.add(temp);
-                }
+//                if (resultCode == Activity.RESULT_OK) {
+//                    String name = intent.getStringExtra("med_name"); //need to get other extras here
+//                    Medicine temp = new Medicine(name, new GregorianCalendar(2015, 3, 26, 3, 1), "2 doses");
+//                    medList.add(temp);
+//                }
                 break;
             }
             case (MyMedicationsActivity_ID): {

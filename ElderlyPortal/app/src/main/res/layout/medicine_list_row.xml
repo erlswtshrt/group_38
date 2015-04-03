@@ -1,70 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:descendantFocusability="blocksDescendants" >
 
-    <ImageView
-        android:id="@+id/icon"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="4px"
-        android:layout_marginRight="10px"
-        android:layout_marginTop="4px"
-        android:src="@drawable/ic_launcher" >
-    </ImageView>
+    <LinearLayout
+        android:id="@+id/hoz_buttons"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_alignParentRight="true">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/ic_launcher"
+            android:layout_margin="10dp">
+        </ImageView>
+
+        <LinearLayout
+            android:id="@+id/hoz_buttons"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:padding="10dp"
+            android:layout_alignParentRight="true"
+            android:gravity="right">
+
+            <Button
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:id="@+id/deleteButton"
+                android:background="@drawable/trash_can"
+                android:onClick="deleteMedicine"
+                android:layout_margin="5dp">
+            </Button>
+
+            <Button
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentLeft="false"
+                android:id="@+id/editButton"
+                android:background="@drawable/pencil"
+                android:onClick="editAMedication"
+                android:layout_alignWithParentIfMissing="false"
+                android:layout_marginBottom="0dp"
+                android:layout_alignParentRight="true"
+                android:layout_margin="5dp">
+            </Button>
+
+        </LinearLayout>
+    </LinearLayout>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:layout_toRightOf="@+id/icon"
-        android:layout_toLeftOf="@+id/deleteButton"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:layout_margin="10dp">
 
         <TextView
             android:id="@+id/label1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="20px" >
+            android:textSize="30sp" >
         </TextView>
 
         <TextView
             android:id="@+id/label2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20px" >
+            android:textSize="24sp" >
         </TextView>
 
     </LinearLayout>
 
-    <Button
-        android:layout_width="50px"
-        android:layout_height="50px"
-        android:layout_alignParentRight="true"
-        android:id="@+id/deleteButton"
-        android:background="@drawable/trash_can"
-        android:layout_gravity="right"
-        android:onClick="deleteMedicine"
-        android:layout_margin="10px">
-    </Button>
-
-    <Button
-        android:layout_width="50px"
-        android:layout_height="50px"
-        android:layout_alignParentLeft="false"
-        android:id="@+id/editButton"
-        android:background="@drawable/pencil"
-        android:layout_gravity="right"
-        android:onClick="editAMedication"
-        android:layout_alignWithParentIfMissing="false"
-        android:layout_marginRight="70px"
-        android:layout_marginLeft="10px"
-        android:layout_marginTop="10px"
-        android:layout_marginBottom="0dp"
-        android:layout_alignParentRight="true">
-    </Button>
-
-</RelativeLayout>
+</LinearLayout>

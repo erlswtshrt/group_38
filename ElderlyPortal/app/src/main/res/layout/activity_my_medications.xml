@@ -22,13 +22,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/spinnerText"
-                android:text="Sort by:" />
+                android:text="Sort by:"
+                android:layout_margin="5dp" />
 
             <Spinner
                 android:id="@+id/spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:entries="@array/medicine_list_spinner_sorting_options"/>
+                android:entries="@array/medicine_list_spinner_sorting_options"
+                android:layout_margin="5dp" />
 
         </LinearLayout>
 
@@ -37,33 +39,38 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/mainText"
-            android:text="My list" />
+            android:text="My list"
+            android:layout_margin="5dp" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/addAMedication"
             android:text="Add A Medication"
-            android:onClick="addAMedication" />
+            android:onClick="addAMedication"
+            android:layout_margin="5dp" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/test"
             android:text="test"
-            android:onClick="test" />
+            android:onClick="test"
+            android:layout_margin="5dp" />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Main Menu"
-            android:onClick="returnToMenu"/>
+            android:onClick="returnToMenu"
+            android:layout_margin="5dp" />
 
         <ListView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/mainText"
             android:id="@android:id/list"
-            android:background="#aaaaaa" />
+            android:background="#ffdfdfdf"
+            android:layout_margin="10dp" />
 
     </LinearLayout>
 

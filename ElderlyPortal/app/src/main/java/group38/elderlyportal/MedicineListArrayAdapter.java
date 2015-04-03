@@ -54,7 +54,7 @@ public class MedicineListArrayAdapter extends ArrayAdapter<Medicine> {
 
         //set the first line
         TextView line1TextView = (TextView) rowView.findViewById(R.id.label1);
-        line1TextView.setText(medicine.getName());
+        line1TextView.setText(medicine.getBrandName());
 
         //set the second line, conditioning on showBy
         TextView textView2 = (TextView) rowView.findViewById(R.id.label2);
@@ -62,7 +62,7 @@ public class MedicineListArrayAdapter extends ArrayAdapter<Medicine> {
             textView2.setText(formatGregorianCalendar(medicine.getDateOfNextRefill()));
         }
         else if (showBy.equals("Dosage")) {
-            textView2.setText(medicine.getDosage());
+            textView2.setText(medicine.getScientificName());
         }
 
         //set the button's tag so that the button knows its medicine
@@ -91,7 +91,7 @@ public class MedicineListArrayAdapter extends ArrayAdapter<Medicine> {
             this.sort(new Comparator<Medicine>() {
                 @Override
                 public int compare(Medicine m1, Medicine m2) {
-                return m1.getName().compareTo(m2.getName());
+                return m1.getBrandName().compareTo(m2.getBrandName());
                 }
             });
         } else if (sortBy.equals("Date")) {

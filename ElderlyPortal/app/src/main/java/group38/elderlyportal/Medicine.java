@@ -2,6 +2,7 @@ package group38.elderlyportal;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 /**
  * Created by Scott on 3/26/2015.
@@ -9,15 +10,21 @@ import java.util.GregorianCalendar;
 public class Medicine implements Parcelable {
 
     //fields
-    private String name ;
-    private GregorianCalendar dateOfNextRefill ;
-    private String dosage ;
+    private ArrayList<Dose> doses;
+    private String brandName;
+    private String scientificName;
+    private String instructions;
+    private String numRefills;
+    private GregorianCalendar refillDate;
 
     //constructor to set all fields
-    public Medicine (String name, GregorianCalendar dateOfNextRefill, String dosage) {
-        this.name = name ;
-        this.dateOfNextRefill = dateOfNextRefill ;
-        this.dosage = dosage ;
+    public Medicine (ArrayList<Dose> doses, String brandName, String scientificName, String instructions, String numRefills, GregorianCalendar refillDate) {
+        this.doses = doses;
+        this.brandName = brandName;
+        this.scientificName = scientificName;
+        this.instructions = instructions;
+        this.numRefills = numRefills;
+        this.refillDate = refillDate;
     }
     //simple constructor, all fields are null to begin with
     public Medicine () {
@@ -25,38 +32,69 @@ public class Medicine implements Parcelable {
 
     //constructor to be used for parseling
     protected Medicine(Parcel in) {
-        name = in.readString();
-        dateOfNextRefill = (GregorianCalendar) in.readValue(GregorianCalendar.class.getClassLoader());
-        dosage = in.readString();
+        doses = (ArrayList<Dose>) in.readArrayList(ArrayList.class.getClassLoader());
+        brandName = in.readString();
+        scientificName = in.readString();
+        instructions = in.readString();
+        instructions = in.readString();
+        numRefills = in.readString();
+        refillDate = (GregorianCalendar) in.readValue(GregorianCalendar.class.getClassLoader());
     }
 
-    public void setName (String name) {
-        this.name = name ;
+    public void setBrandName (String brandName) {
+        this.brandName = brandName ;
     }
 
-    public void setDateOfNextRefill (GregorianCalendar dateOfNextRefill) {
-        this.dateOfNextRefill = dateOfNextRefill ;
+    public void setScientificName (String scientificName) {
+        this.scientificName = scientificName ;
     }
 
-    public void setDosage (String dosage) {
-        this.dosage = dosage ;
+    public void setInstructions (String instructions) {
+        this.instructions = instructions ;
     }
 
-    public String getName () {
-        return this.name ;
+    public void setNumRefills (String numRefills) {
+        this.numRefills = numRefills ;
+    }
+
+    public void setDateOfNextRefill (GregorianCalendar refillDate) {
+        this.refillDate = refillDate ;
+    }
+
+    public void setDoses (ArrayList<Dose> doses) {
+        this.doses = doses ;
+    }
+
+
+    // getter methods
+
+    public String getBrandName () {
+        return brandName ;
+    }
+
+    public String getScientificName () {
+        return scientificName ;
+    }
+
+    public String getInstructions () {
+        return instructions ;
+    }
+
+    public String getNumRefills () {
+        return numRefills ;
     }
 
     public GregorianCalendar getDateOfNextRefill () {
-        return this.dateOfNextRefill ;
+        return refillDate ;
     }
 
-    public String getDosage () {
-        return this.dosage ;
+    public ArrayList<Dose> getDoses () {
+        return doses ;
     }
 
     @Override
     public String toString () {
-        return name + " " + "NEXT REFILL" + " " + dosage;
+        return brandName + " " + "NEXT REFILL";
     }
 
     @Override
@@ -66,9 +104,12 @@ public class Medicine implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString (name) ;
-        dest.writeValue (dateOfNextRefill) ;
-        dest.writeString (dosage) ;
+        dest.writeValue(doses);
+        dest.writeString (brandName);
+        dest.writeString (scientificName);
+        dest.writeString (instructions);
+        dest.writeString (numRefills);
+        dest.writeValue (refillDate) ;
     }
 
     @SuppressWarnings("unused")

@@ -8,13 +8,13 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20px">
+    android:padding="20dp">
 
     <TextView android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Daily doses:"
         android:textSize="30sp"
-        android:layout_margin="20px" />
+        android:layout_margin="10dp" />
 
     <LinearLayout
         android:id="@+id/lin"
@@ -27,85 +27,58 @@
     <Button android:id="@+id/addADose"
         android:text="@string/addADose"
         android:layout_width="fill_parent"
-        android:layout_height="120px"
+        android:layout_height="50dp"
         android:onClick="onAddADoseButtonClick"
-        android:layout_margin="20px" />
+        android:layout_margin="10dp"
+        android:background="#3D95CE" />
 
     <TextView android:layout_width="wrap_content"
  	    android:layout_height="wrap_content"
- 	    android:text="@string/med_name"
+ 	    android:text="Brand Name"
         android:textSize="30sp"
-        />
+        android:layout_margin="10dp" />
 
-    <EditText android:id="@+id/med_name"
+    <EditText android:id="@+id/brand_name"
  	    android:layout_width="fill_parent"
  	    android:layout_height="wrap_content"
  	    android:layout_weight="1"
         android:inputType="text"
         android:gravity="top"
-        />
-
-    <TextView android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:text="@string/dose"
-        android:textSize="30sp"
-        />
-
-	<EditText android:id="@+id/dose"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:layout_weight="1"
-		android:scrollbars="vertical"
-        android:inputType="text"
-        />
+        android:layout_margin="10dp" />
 
     <TextView android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/how_often"
+        android:text="Scientific Name"
         android:textSize="30sp"
-        />
+        android:layout_margin="10dp" />
 
-    <EditText android:id="@+id/how_often"
+    <EditText android:id="@+id/sci_name"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:scrollbars="vertical"
         android:inputType="text"
-        />
+        android:gravity="top"
+        android:layout_margin="10dp" />
 
     <TextView android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/TID_Code"
+        android:text="Instructions"
         android:textSize="30sp"
-        />
+        android:layout_margin="10dp" />
 
-    <EditText android:id="@+id/TID_Code"
+    <EditText android:id="@+id/instructions"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:scrollbars="vertical"
         android:inputType="text"
-        />
+        android:gravity="top"
+        android:layout_margin="10dp" />
 
     <TextView android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/BID_Code"
+            android:text="Number of Refills"
         android:textSize="30sp"
-        />
-
-    <EditText android:id="@+id/BID_Code"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:scrollbars="vertical"
-        android:inputType="text"
-        />
-
-    <TextView android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/num_refills"
-        android:textSize="30sp"
-        />
+        android:layout_margin="10dp" />
 
     <EditText android:id="@+id/num_refills"
         android:layout_width="fill_parent"
@@ -113,35 +86,48 @@
         android:layout_weight="1"
         android:scrollbars="vertical"
         android:inputType="text"
-        />
+        android:layout_margin="10dp" />
 
     <TextView android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/med_notes"
+        android:text="Refill Date"
         android:textSize="30sp"
-        />
+        android:layout_margin="10dp" />
 
-    <EditText android:id="@+id/med_notes"
+    <EditText android:id="@+id/refill_date"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:scrollbars="vertical"
         android:inputType="text"
-        />
+        android:layout_margin="10dp" />
 
-    <Button android:id="@+id/save"
-		 android:text="@string/save"
-		 android:layout_width="wrap_content"
-		 android:layout_height="wrap_content"
-         android:onClick="onSaveButtonClick"
-        />
+    <LinearLayout
+        android:id="@+id/hoz_buttons"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:padding="10dp">
 
-    <Button android:id="@+id/clear"
-		 android:text="@string/clear"
-		 android:layout_width="wrap_content"
-		 android:layout_height="wrap_content"
-         android:onClick="onClearButtonClick"
-        />
+        <Button android:id="@+id/save"
+            android:text="@string/save"
+            android:layout_width="120dp"
+            android:layout_height="35dp"
+            android:onClick="onSaveButtonClick"
+            android:layout_margin="10dp"
+            android:background="#3D95CE"
+            android:textColor="#FFFFFF" />
+
+        <Button android:id="@+id/clear"
+            android:text="@string/clear"
+            android:layout_width="120dp"
+            android:layout_height="35dp"
+            android:onClick="onClearButtonClick"
+            android:layout_margin="10dp"
+            android:background="#ffdfdfdf" />
+
+    </LinearLayout>
 
 </LinearLayout>
 </ScrollView>

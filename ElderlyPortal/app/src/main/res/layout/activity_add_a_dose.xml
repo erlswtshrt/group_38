@@ -8,10 +8,10 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="40px">
+        android:padding="20dp">
 
         <TextView android:layout_width="wrap_content"
-            android:layout_height="160px"
+            android:layout_height="80dp"
             android:text="Add a new dose:"
             android:textSize="84px"
             android:textColor="#ff222222"
@@ -22,13 +22,13 @@
             android:text="@string/doseTime"
             android:textSize="70px"
             android:textColor="#ff222222"
-            android:layout_margin="20px" />
+            android:layout_margin="10dp" />
 
         <Spinner
-            android:layout_width="400px"
-            android:layout_height="160px"
+            android:layout_width="200dp"
+            android:layout_height="80dp"
             android:id="@+id/timeSpinner"
-            android:layout_margin="20px"
+            android:layout_margin="10dp"
             android:background="#FACE0E" />
 
         <TextView android:layout_width="wrap_content"
@@ -36,13 +36,13 @@
             android:text="@string/numOfPills"
             android:textSize="70px"
             android:textColor="#ff222222"
-            android:layout_margin="20px" />
+            android:layout_margin="10dp" />
 
         <Spinner
-            android:layout_width="400px"
-            android:layout_height="160px"
+            android:layout_width="200dp"
+            android:layout_height="80dp"
             android:id="@+id/numOfPillsSpinner"
-            android:layout_margin="20px"
+            android:layout_margin="20dp"
             android:background="#FACE0E" />
 
         <Button android:id="@+id/save"
@@ -52,9 +52,9 @@
             android:onClick="onSaveButtonClick"
             android:background="#3D95CE"
             android:textColor="#FFFFFF"
-            android:layout_marginLeft="20px"
-            android:layout_marginTop="40px"
-            android:layout_marginRight="20px" />
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp" />
 
     </LinearLayout>
 </ScrollView>
