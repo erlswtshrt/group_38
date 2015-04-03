@@ -97,7 +97,7 @@ public class Medicine implements Parcelable {
 
     @Override
     public String toString () {
-        return brandName ;
+        return brandName + scientificName + instructions + numRefills;
     }
 
     @Override
