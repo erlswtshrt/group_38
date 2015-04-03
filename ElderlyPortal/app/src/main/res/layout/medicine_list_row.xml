@@ -17,10 +17,9 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/icon"
-        android:layout_toLeftOf="@+id/hoz_buttons"
+        android:layout_below="@+id/icon"
         android:orientation="vertical"
-        android:layout_margin="10dp">
+        android:layout_margin="5dp">
 
         <TextView
             android:id="@+id/label1"
