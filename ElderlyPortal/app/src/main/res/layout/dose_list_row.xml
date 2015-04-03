@@ -17,21 +17,21 @@
             android:id="@+id/timeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="70px" >
+            android:textSize="30sp" >
         </TextView>
 
         <TextView
             android:id="@+id/numOfPillsText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="70px" >
+            android:textSize="30sp" >
         </TextView>
 
     </LinearLayout>
 
     <Button
-        android:layout_width="100px"
-        android:layout_height="100px"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_alignParentRight="true"
         android:id="@+id/deleteButton"
         android:background="@drawable/trash_can"
