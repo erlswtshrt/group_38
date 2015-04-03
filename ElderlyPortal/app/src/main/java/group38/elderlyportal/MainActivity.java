@@ -71,7 +71,10 @@ public class MainActivity extends Activity {
                     selectedReminderPreference = intent.getStringExtra("ReminderPreference");
                     selectedLongTermReminder = intent.getStringExtra("LongTermReminder");
                 }
+                break;
             }
+            default:
+                break;
         }
     }
 
