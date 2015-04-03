@@ -33,6 +33,13 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        medList.add(new Medicine (new ArrayList<Dose> (), "Medicine 1", "Sci Name A", "Instructions", "5", new GregorianCalendar(2015, 3, 26, 1, 1)));
+        medList.add(new Medicine (new ArrayList<Dose> (), "Medicine 2", "Sci Name G", "Instructions", "5", new GregorianCalendar(2015, 3, 27, 3, 1)));
+        medList.add(new Medicine (new ArrayList<Dose> (), "Medicine 3", "Sci Name H", "Instructions", "5", new GregorianCalendar(2015, 3, 26, 6, 1)));
+        medList.add(new Medicine (new ArrayList<Dose> (), "Medicine 4", "Sci Name E", "Instructions", "5", new GregorianCalendar(2015, 3, 27, 3, 1)));
+        medList.add(new Medicine (new ArrayList<Dose> (), "Medicine 5", "Sci Name F", "Instructions", "5", new GregorianCalendar(2015, 3, 26, 9, 1)));
+        medList.add(new Medicine (new ArrayList<Dose> (), "Medicine 6", "Sci Name V", "Instructions", "5", new GregorianCalendar(2015, 3, 28, 3, 1)));
+        medList.add(new Medicine (new ArrayList<Dose> (), "Medicine 7", "Sci Name B", "Instructions", "5", new GregorianCalendar(2015, 3, 26, 14, 1)));
     }
 
     public void myMedications(View view) {
@@ -51,11 +58,10 @@ public class MainActivity extends Activity {
         super.onActivityResult(requestCode, resultCode, intent);
         switch (requestCode) {
             case (AddAMedicationActivity_ID): {
-//                if (resultCode == Activity.RESULT_OK) {
-//                    String name = intent.getStringExtra("med_name"); //need to get other extras here
-//                    Medicine temp = new Medicine(name, new GregorianCalendar(2015, 3, 26, 3, 1), "2 doses");
-//                    medList.add(temp);
-//                }
+                if (resultCode == Activity.RESULT_OK) {
+                    Medicine temp = intent.getExtras().getParcelable("addedMedicine");
+                    medList.add(temp);
+                }
                 break;
             }
             case (MyMedicationsActivity_ID): {
