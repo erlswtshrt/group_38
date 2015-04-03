@@ -6,10 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+import java.util.GregorianCalendar;
+
 
 public class EditAMedicationActivity extends Activity {
 
     private EditAMedicationView view;
+    private ArrayList<Dose> doses;
     private Medicine theMedicine ; //the medicine that is being edited
 
     @Override
@@ -20,47 +24,48 @@ public class EditAMedicationActivity extends Activity {
         setContentView(R.layout.activity_edit_a_medication);
 
         //retrieve the medicine from the intent
-        theMedicine = (Medicine) getIntent().getExtras().getParcelable("Medicine") ;
+        theMedicine = (Medicine) getIntent().getExtras().getParcelable("Medicine");
 
         //set the name field of the form to be the medicine's name
-        EditText med_name_Field = (EditText) findViewById(R.id.med_name) ;
-        med_name_Field.setText (theMedicine.getBrandName()) ;
+        EditText brandNameField = (EditText) findViewById(R.id.brand_name);
+        brandNameField.setText(theMedicine.getBrandName());
 
-        //set the dosage field
-        EditText med_dosage_Field = (EditText) findViewById(R.id.dose);
-        med_dosage_Field.setText(theMedicine.getScientificName());
+        //set the scientific name field
+        EditText scientificNameField = (EditText) findViewById(R.id.sci_name);
+        scientificNameField.setText(theMedicine.getScientificName());
+
+
+        EditText instructionsField = (EditText) findViewById(R.id.instructions);
+        instructionsField.setText(theMedicine.getInstructions());
+
+        EditText numRefillsField = (EditText) findViewById(R.id.num_refills);
+        numRefillsField.setText(theMedicine.getNumRefills());
+
+        EditText refillDateField = (EditText) findViewById(R.id.refill_date);
+        //refillDateField.setText(theMedicine.getDateOfNextRefill());
     }
 
     public void onSaveButtonClick(View view) {
         Medicine oldMedicine = theMedicine;
 
-        EditText med_name_Field = (EditText) findViewById(R.id.med_name);
-        EditText dose_Field = (EditText) findViewById(R.id.dose);
-        EditText how_often_Field = (EditText) findViewById(R.id.how_often);
-        EditText tid_Field = (EditText) findViewById(R.id.TID_Code);
-        EditText bid_Field = (EditText) findViewById(R.id.BID_Code);
-        EditText num_refills_Field = (EditText) findViewById(R.id.num_refills);
-        EditText med_notes_Field = (EditText) findViewById(R.id.med_notes);
+        EditText brandNamField = (EditText) findViewById(R.id.brand_name);
+        EditText scientificNameField = (EditText) findViewById(R.id.sci_name);
+        EditText instructionsField = (EditText) findViewById(R.id.instructions);
+        EditText numRefillsField = (EditText) findViewById(R.id.num_refills);
+        EditText refillDateField = (EditText) findViewById(R.id.refill_date);
 
-        String med_name = med_name_Field.getText().toString();
-        String dose = dose_Field.getText().toString();
-        String how_often = how_often_Field.getText().toString();
-        String tid = tid_Field.getText().toString();
-        String bid = bid_Field.getText().toString();
-        String num_refills = num_refills_Field.getText().toString();
-        String med_notes = med_notes_Field.getText().toString();
-
+        String brandName = brandNamField.getText().toString();
+        String scientificName = scientificNameField.getText().toString();
+        String instructions = instructionsField.getText().toString();
+        String numRefills = numRefillsField.getText().toString();
+        String refillDate = refillDateField.getText().toString();
 
         Intent resultIntent = new Intent();
 
-        resultIntent.putExtra("med_name", med_name);
-        resultIntent.putExtra("dose", dose);
-        resultIntent.putExtra("how_often", how_often);
-        resultIntent.putExtra("tid", tid);
-        resultIntent.putExtra("bid", bid);
-        resultIntent.putExtra("num_refills", num_refills);
-        resultIntent.putExtra("med_notes", med_notes);
         resultIntent.putExtra("old_medicine", oldMedicine);
+
+        Medicine addedMedicine = new Medicine (doses, brandName, scientificName, instructions, numRefills, new GregorianCalendar(2015, 3, 26, 3, 1)) ;
+        resultIntent.putExtra ("addedMedicine", addedMedicine) ;
 
         setResult(Activity.RESULT_OK, resultIntent);
 
@@ -68,23 +73,17 @@ public class EditAMedicationActivity extends Activity {
     }
 
     public void onClearButtonClick(View view) {
-        EditText med_name_Field = (EditText) findViewById(R.id.med_name);
-        EditText dose_Field = (EditText) findViewById(R.id.dose);
-        EditText how_often_Field = (EditText) findViewById(R.id.how_often);
-        EditText tid_Field = (EditText) findViewById(R.id.TID_Code);
-        EditText bid_Field = (EditText) findViewById(R.id.BID_Code);
-        EditText num_refills_Field = (EditText) findViewById(R.id.num_refills);
-        EditText med_notes_Field = (EditText) findViewById(R.id.med_notes);
+        EditText brandNamField = (EditText) findViewById(R.id.brand_name);
+        EditText scientificNameField = (EditText) findViewById(R.id.sci_name);
+        EditText instructionsField = (EditText) findViewById(R.id.instructions);
+        EditText numRefillsField = (EditText) findViewById(R.id.num_refills);
+        EditText refillDateField = (EditText) findViewById(R.id.refill_date);
 
-        med_name_Field.setText("");
-        dose_Field.setText("");
-        how_often_Field.setText("");
-        tid_Field.setText("");
-        bid_Field.setText("");
-        num_refills_Field.setText("");
-        med_notes_Field.setText("");
-
-
+        // reset input strings
+        brandNamField.setText("");
+        scientificNameField.setText("");
+        instructionsField.setText("");
+        numRefillsField.setText("");
+        refillDateField.setText("");
     }
-
 }
