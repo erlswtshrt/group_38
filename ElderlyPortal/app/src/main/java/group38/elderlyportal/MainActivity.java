@@ -21,7 +21,13 @@ public class MainActivity extends Activity {
     public static final int AddAMedicationActivity_ID = 2;
     public static final int CalendarActivity_ID = 3;
     public static final int SettingsActivity_ID = 4;
+
     ArrayList<Medicine> medList = new ArrayList<Medicine>();
+
+    private String selectedTextSize;
+    private String selectedAutoAlerts;
+    private String selectedReminderPreference;
+    private String selectedLongTermReminder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +62,16 @@ public class MainActivity extends Activity {
                 if (resultCode == Activity.RESULT_OK) {
                     medList = intent.getParcelableArrayListExtra("list");
                 }
+                break;
             }
-            break;
+            case (SettingsActivity_ID): {
+                if (resultCode == Activity.RESULT_OK) {
+                    selectedTextSize = intent.getStringExtra("TextSize");
+                    selectedAutoAlerts = intent.getStringExtra("AutoAlerts");
+                    selectedReminderPreference = intent.getStringExtra("ReminderPreference");
+                    selectedLongTermReminder = intent.getStringExtra("LongTermReminder");
+                }
+            }
         }
     }
 
@@ -68,6 +82,10 @@ public class MainActivity extends Activity {
 
     public void settings(View view) {
         Intent intent = new Intent(this, SettingsActivity.class);
+        intent.putExtra("TextSize", selectedTextSize);
+        intent.putExtra("AutoAlerts", selectedAutoAlerts);
+        intent.putExtra("ReminderPreference", selectedReminderPreference);
+        intent.putExtra("LongTermReminder", selectedLongTermReminder);
         startActivityForResult(intent, SettingsActivity_ID);
     }
 }
