@@ -97,13 +97,16 @@ public class AddAMedicationActivity extends Activity {
 
 
         Intent resultIntent = new Intent();
-
+        /*
         resultIntent.putParcelableArrayListExtra("doses", doses);
         resultIntent.putExtra("brandName", brandName);
         resultIntent.putExtra("scientificName", scientificName);
         resultIntent.putExtra("instructions", instructions);
         resultIntent.putExtra("numRefills", numRefills);
         resultIntent.putExtra("refillDate", new GregorianCalendar(2015, 3, 26, 3, 1));
+        */
+        Medicine addedMedicine = new Medicine (doses, brandName, scientificName, instructions, numRefills, new GregorianCalendar(2015, 3, 26, 3, 1)) ;
+        resultIntent.putExtra ("addedMedicine", addedMedicine) ;
 
         setResult(Activity.RESULT_OK, resultIntent);
 

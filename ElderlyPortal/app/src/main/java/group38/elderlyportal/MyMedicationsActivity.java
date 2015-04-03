@@ -21,7 +21,7 @@ public class MyMedicationsActivity extends ListActivity {
     //IDs for new activities
     public static final int AddAMedicationActivity_ID = 1;
     public static final int EditAMedicationActivity_ID = 2;
-    ArrayList<Medicine> list;
+    ArrayList<Medicine> medicineList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,21 +31,20 @@ public class MyMedicationsActivity extends ListActivity {
         //initialize the text before the list
         text = (TextView) findViewById(R.id.mainText);
 
-        list = getIntent().getParcelableArrayListExtra("list");
+       // medicineList = getIntent().getParcelableArrayListExtra("list");
 
         //populate the medicine list with random medicines - for debugging
-       /* ArrayList<Medicine> list = new ArrayList<Medicine> () ;
-        list.add(new Medicine ("medicine 1", new GregorianCalendar (2015,3,26,3,1), "1 dose")) ;
-        list.add(new Medicine ("medicine 2", new GregorianCalendar (2015,3,26,5,0), "3 doses")) ;
-        list.add(new Medicine ("medicine 3", new GregorianCalendar (2015,9,2,12,47), "9 doses")) ;
-        list.add(new Medicine ("medicine 4", new GregorianCalendar (2015,3,28,8,9), "4 doses")) ;
-        list.add(new Medicine ("medicine 5", new GregorianCalendar (2015,12,28,2,26), "2 doses")) ;
-        list.add(new Medicine ("medicine 6", new GregorianCalendar (2015,3,27,7,47), "3 doses")) ;
-        list.add(new Medicine ("medicine 7", new GregorianCalendar (2014,3,28,8,9), "10 doses")) ;
-        list.add(new Medicine ("medicine 8", new GregorianCalendar (2015,3,28,11,26), "0 doses")) ;*/
+        medicineList = new ArrayList<Medicine> () ;
+        medicineList.add(new Medicine (new ArrayList<Dose> (), "Medicine 1", "Sci Name A", "Instructions", "5", new GregorianCalendar(2015, 3, 26, 1, 1))) ;
+        medicineList.add(new Medicine (new ArrayList<Dose> (), "Medicine 2", "Sci Name G", "Instructions", "5", new GregorianCalendar(2015, 3, 27, 3, 1))) ;
+        medicineList.add(new Medicine (new ArrayList<Dose> (), "Medicine 3", "Sci Name H", "Instructions", "5", new GregorianCalendar(2015, 3, 26, 6, 1))) ;
+        medicineList.add(new Medicine (new ArrayList<Dose> (), "Medicine 4", "Sci Name E", "Instructions", "5", new GregorianCalendar(2015, 3, 27, 3, 1))) ;
+        medicineList.add(new Medicine (new ArrayList<Dose> (), "Medicine 5", "Sci Name F", "Instructions", "5", new GregorianCalendar(2015, 3, 26, 9, 1))) ;
+        medicineList.add(new Medicine (new ArrayList<Dose> (), "Medicine 6", "Sci Name V", "Instructions", "5", new GregorianCalendar(2015, 3, 28, 3, 1))) ;
+        medicineList.add(new Medicine (new ArrayList<Dose> (), "Medicine 7", "Sci Name B", "Instructions", "5", new GregorianCalendar(2015, 3, 26, 14, 1))) ;
 
         // initiate the listadapter to be used for managing the list of medicines
-        MedicineListArrayAdapter adapter = new MedicineListArrayAdapter(this, list);
+        MedicineListArrayAdapter adapter = new MedicineListArrayAdapter(this, medicineList);
 
         // assign the list adapter to this class
         setListAdapter(adapter);
@@ -152,7 +151,7 @@ public class MyMedicationsActivity extends ListActivity {
 
     public void returnToMenu(View view) {
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putParcelableArrayListExtra("list", list);
+        intent.putParcelableArrayListExtra("list", medicineList);
         setResult(Activity.RESULT_OK, intent);
         finish();
     }
@@ -172,8 +171,8 @@ public class MyMedicationsActivity extends ListActivity {
                     //GregorianCalendar refillDate = intent.get("refillDate");
 
                     Medicine temp = new Medicine(null, brandName, scientificName, instructions, numRefills, new GregorianCalendar(2015, 3, 26, 3, 1));
-                    list.add(temp);
-                    MedicineListArrayAdapter adapter = new MedicineListArrayAdapter(this, list);
+                    medicineList.add(temp);
+                    MedicineListArrayAdapter adapter = new MedicineListArrayAdapter(this, medicineList);
                     setListAdapter(adapter);
                     adapter.sortBy("Name");
                 }
@@ -202,16 +201,5 @@ public class MyMedicationsActivity extends ListActivity {
             break;
         }
     }
-
-    /* A test method to be used for debugging.
-       @TODO remove this
-    */
-    public void test (View view) {
-        double rand = Math.random() ;
-        MedicineListArrayAdapter adapter = (MedicineListArrayAdapter) getListAdapter() ;
-        if (rand < 0.5) adapter.showBy("Date") ;
-        if (rand > 0.5) adapter.showBy("Dosage") ;
-    }
-
 
 }

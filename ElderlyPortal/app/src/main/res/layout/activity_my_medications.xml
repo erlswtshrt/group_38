@@ -53,13 +53,6 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/test"
-            android:text="test"
-            android:onClick="test"
-            android:layout_margin="5dp" />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="Main Menu"
             android:onClick="returnToMenu"
             android:layout_margin="5dp" />

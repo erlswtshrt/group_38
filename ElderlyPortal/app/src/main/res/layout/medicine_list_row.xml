@@ -1,67 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:descendantFocusability="blocksDescendants" >
 
-    <LinearLayout
-        android:id="@+id/hoz_buttons"
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:layout_alignParentRight="true">
-
-        <ImageView
-            android:id="@+id/icon"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_alignParentLeft="true"
-            android:src="@drawable/ic_launcher"
-            android:layout_margin="10dp">
-        </ImageView>
-
-        <LinearLayout
-            android:id="@+id/hoz_buttons"
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:padding="10dp"
-            android:layout_alignParentRight="true"
-            android:gravity="right">
-
-            <Button
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_alignParentRight="true"
-                android:id="@+id/deleteButton"
-                android:background="@drawable/trash_can"
-                android:onClick="deleteMedicine"
-                android:layout_margin="5dp">
-            </Button>
-
-            <Button
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_alignParentLeft="false"
-                android:id="@+id/editButton"
-                android:background="@drawable/pencil"
-                android:onClick="editAMedication"
-                android:layout_alignWithParentIfMissing="false"
-                android:layout_marginBottom="0dp"
-                android:layout_alignParentRight="true"
-                android:layout_margin="5dp">
-            </Button>
-
-        </LinearLayout>
-    </LinearLayout>
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/ic_launcher"
+        android:layout_margin="10dp">
+    </ImageView>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/icon"
+        android:layout_toLeftOf="@+id/hoz_buttons"
         android:orientation="vertical"
         android:layout_margin="10dp">
 
@@ -69,16 +26,44 @@
             android:id="@+id/label1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30sp" >
+            android:textSize="25sp" >
         </TextView>
 
         <TextView
             android:id="@+id/label2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="24sp" >
+            android:textSize="20sp" >
         </TextView>
 
     </LinearLayout>
 
-</LinearLayout>
+    <LinearLayout
+        android:id="@+id/hoz_buttons"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_alignParentRight="true">
+
+        <Button
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/editButton"
+            android:background="@drawable/pencil"
+            android:onClick="editAMedication"
+            android:layout_marginBottom="0dp"
+            android:layout_margin="5dp">
+        </Button>
+
+        <Button
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/deleteButton"
+            android:background="@drawable/trash_can"
+            android:onClick="deleteMedicine"
+            android:layout_margin="5dp">
+        </Button>
+    </LinearLayout>
+
+</RelativeLayout>

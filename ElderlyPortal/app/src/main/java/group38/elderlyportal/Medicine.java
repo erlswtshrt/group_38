@@ -30,12 +30,15 @@ public class Medicine implements Parcelable {
     public Medicine () {
     }
 
-    //constructor to be used for parseling
     protected Medicine(Parcel in) {
-        doses = (ArrayList<Dose>) in.readArrayList(ArrayList.class.getClassLoader());
+        if (in.readByte() == 0x01) {
+            doses = new ArrayList<Dose>();
+            in.readList(doses, Dose.class.getClassLoader());
+        } else {
+            doses = null;
+        }
         brandName = in.readString();
         scientificName = in.readString();
-        instructions = in.readString();
         instructions = in.readString();
         numRefills = in.readString();
         refillDate = (GregorianCalendar) in.readValue(GregorianCalendar.class.getClassLoader());
@@ -94,34 +97,39 @@ public class Medicine implements Parcelable {
 
     @Override
     public String toString () {
-        return brandName + " " + "NEXT REFILL";
+        return brandName ;
     }
 
     @Override
     public int describeContents() {
-        return 0 ;
+        return 0;
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeValue(doses);
-        dest.writeString (brandName);
-        dest.writeString (scientificName);
-        dest.writeString (instructions);
-        dest.writeString (numRefills);
-        dest.writeValue (refillDate) ;
+        if (doses == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeList(doses);
+        }
+        dest.writeString(brandName);
+        dest.writeString(scientificName);
+        dest.writeString(instructions);
+        dest.writeString(numRefills);
+        dest.writeValue(refillDate);
     }
 
     @SuppressWarnings("unused")
     public static final Parcelable.Creator<Medicine> CREATOR = new Parcelable.Creator<Medicine>() {
         @Override
         public Medicine createFromParcel(Parcel in) {
-            return new Medicine(in) ;
+            return new Medicine(in);
         }
 
         @Override
         public Medicine[] newArray(int size) {
-            return new Medicine [size] ;
+            return new Medicine[size];
         }
-    } ;
+    };
 }

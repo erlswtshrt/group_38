@@ -26,7 +26,7 @@ public class MedicineListArrayAdapter extends ArrayAdapter<Medicine> {
     private final Context context;
     private final ArrayList<Medicine> values; //the medicines to be displayed
     private String showBy ; //the field that the second line of the row should display
-    private final String INITAL_SHOW_BY = "Date" ; //start off by showing the date
+    private final String INITAL_SHOW_BY = "Scientific Name" ; //what to start off showing
     private final int DELETE_BUTTON_ROW_TAG_KEY = 1 ; //the int of the tag where the button stores what row it's in
 
     /* Constructor, which takes in the list of medicines.
@@ -58,11 +58,14 @@ public class MedicineListArrayAdapter extends ArrayAdapter<Medicine> {
 
         //set the second line, conditioning on showBy
         TextView textView2 = (TextView) rowView.findViewById(R.id.label2);
-        if (showBy.equals("Date")) {
-            textView2.setText(formatGregorianCalendar(medicine.getDateOfNextRefill()));
-        }
-        else if (showBy.equals("Dosage")) {
+        if (showBy.equals("Brand Name")) {
             textView2.setText(medicine.getScientificName());
+        }
+        else if (showBy.equals("Scientific Name")) {
+            textView2.setText(medicine.getScientificName());
+        }
+        else if (showBy.equals("Refill Date")) {
+            textView2.setText(formatGregorianCalendar(medicine.getDateOfNextRefill()));
         }
 
         //set the button's tag so that the button knows its medicine
@@ -70,7 +73,8 @@ public class MedicineListArrayAdapter extends ArrayAdapter<Medicine> {
         deleteButton.setTag (medicine) ;
 
         Button editButton = (Button) rowView.findViewById(R.id.editButton);
-        editButton.setTag(medicine);
+        editButton.setTag (medicine);
+
         return rowView;
     }
 
@@ -87,23 +91,32 @@ public class MedicineListArrayAdapter extends ArrayAdapter<Medicine> {
        which automatically refreshes the list.
      */
     public void sortBy (String sortBy) {
-        if (sortBy.equals("Name")) {
+        if (sortBy.equals("Brand Name")) {
             this.sort(new Comparator<Medicine>() {
                 @Override
                 public int compare(Medicine m1, Medicine m2) {
-                return m1.getBrandName().compareTo(m2.getBrandName());
+                    return m1.getBrandName().compareTo(m2.getBrandName());
                 }
             });
-        } else if (sortBy.equals("Date")) {
+        } else if (sortBy.equals("Scientific Name")) {
             this.sort(new Comparator<Medicine>() {
                 @Override
                 public int compare(Medicine m1, Medicine m2) {
-                return m1.getDateOfNextRefill().compareTo(m2.getDateOfNextRefill());
+                    return m1.getScientificName().compareTo(m2.getScientificName());
+                }
+            });
+        } else if (sortBy.equals("Refill Date")) {
+            this.sort(new Comparator<Medicine>() {
+                @Override
+                public int compare(Medicine m1, Medicine m2) {
+                    return m1.getDateOfNextRefill().compareTo(m2.getDateOfNextRefill());
                 }
             });
         }
-    }
 
+        //show the field that was just sorted by
+        showBy (sortBy) ;
+    }
 
     /* How to format a GregorianCalendar so that it looks good for displaying.
        To be used on the second line of each list row.
