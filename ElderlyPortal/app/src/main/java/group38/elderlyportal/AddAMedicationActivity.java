@@ -5,16 +5,28 @@ import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
+import java.util.Date;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
@@ -27,10 +39,14 @@ public class AddAMedicationActivity extends Activity {
     private AddAMedicationView view;
 
     private ArrayList<Dose> doses ;
+    private ImageView mImageView;
 
     public static final int AddADoseActivity_ID = 5;
-
+    public static final int REQUEST_IMAGE_CAPTURE = 6;
+    public static final int REQUEST_TAKE_PHOTO = 7;
+    private String mCurrentPhotoPath;
     private DoseListArrayAdapter adapter;
+    private File photoFile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +67,74 @@ public class AddAMedicationActivity extends Activity {
         startActivityForResult(intent, AddADoseActivity_ID);
     }
 
+    public void onTakePillBottleButtonClick(View view) {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            // Create the File where the photo should go
+            photoFile = null;
+            try {
+                photoFile = createImageFile();
+            } catch (IOException ex) {
+                // Error occurred while creating the File
+                //TODO decide what to do with file io error
+            }
+            // Continue only if the File was successfully created
+            if (photoFile != null) {
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,
+                        Uri.fromFile(photoFile));
+                startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
+            }
+
+
+            //startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
+
+
+    }
+
+    //code from the Java site for making unique filenames for the photo file
+    private File createImageFile() throws IOException {
+        // Create an image file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(
+                imageFileName,  /* prefix */
+                ".jpg",         /* suffix */
+                storageDir      /* directory */
+        );
+
+        // Save a file: path for use with ACTION_VIEW intents
+        mCurrentPhotoPath = "file:" + image.getAbsolutePath();
+        return image;
+    }
+
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        mImageView = (ImageView) findViewById(R.id.pillBottleIcon);
+        if (requestCode == REQUEST_TAKE_PHOTO && resultCode == Activity.RESULT_OK) {
+            /*addPhotoToGallery();
+            CameraActivity activity = (CameraActivity)getActivity();
+
+            // Show the full sized image.
+            setFullImageFromFilePath(activity.getCurrentPhotoPath(), mImageView);
+            setFullImageFromFilePath(activity.getCurrentPhotoPath(), mThumbnailImageView);*/
+            Drawable d = Drawable.createFromPath(photoFile.toString());
+            mImageView.setImageDrawable(d);
+
+            Toast.makeText(getApplicationContext(), "take photo worked", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(getApplicationContext(), "take photo fail", Toast.LENGTH_LONG).show();
+
+        }
+
+        //mImageView = (ImageView) findViewById(R.id.pillBottleIcon);
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            mImageView.setImageBitmap(imageBitmap);
+        }
 
         if (requestCode == AddADoseActivity_ID) {
             if(resultCode == RESULT_OK){

@@ -12,6 +12,28 @@
 
     <TextView android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:text="Take Pill Bottle Picture:"
+        android:textSize="30sp"
+        android:layout_margin="10dp" />
+
+    <Button android:id="@+id/picturePillBottle"
+        android:text="@string/picturePillBottleString"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:onClick="onTakePillBottleButtonClick"
+        android:layout_margin="10dp"
+        android:background="#3D95CE"
+        android:textColor="#ffffffff" />
+
+    <ImageView
+        android:id="@+id/pillBottleIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true">
+    </ImageView>
+
+    <TextView android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:text="Daily doses:"
         android:textSize="30sp"
         android:layout_margin="10dp" />
